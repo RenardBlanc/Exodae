@@ -1,0 +1,137 @@
+[27/10/2022 12:12:59] Début des expériences 
+-----------------------------------------------------
+[27/10/2022 12:12:59] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 4 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.034065935760736465
+* Loss = 4.165872573852539
+* validation_accurancy = 0.021929824724793434
+* validation_loss = 4.369724750518799Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 2 s.
+[27/10/2022 12:13:01] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 16 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.05494505539536476
+* Loss = 4.096338272094727
+* validation_accurancy = 0.030701754614710808
+* validation_loss = 4.305926322937012Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 2 s.
+[27/10/2022 12:13:03] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 64 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.07472527772188187
+* Loss = 3.920644521713257
+* validation_accurancy = 0.048245612531900406
+* validation_loss = 4.246438026428223Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 2 s.
+[27/10/2022 12:13:04] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 128 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.08351648598909378
+* Loss = 3.758103370666504
+* validation_accurancy = 0.030701754614710808
+* validation_loss = 4.1208014488220215Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 2 s.
+[27/10/2022 12:13:06] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 256 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1021978035569191
+* Loss = 3.5885393619537354
+* validation_accurancy = 0.03947368264198303
+* validation_loss = 4.00862455368042Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 2 s.
+[27/10/2022 12:13:08] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 512 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12857143580913544
+* Loss = 3.4387543201446533
+* validation_accurancy = 0.06578947603702545
+* validation_loss = 3.9533588886260986Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 3 s.
+[27/10/2022 12:13:11] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12857143580913544
+* Loss = 3.3003339767456055
+* validation_accurancy = 0.05701754242181778
+* validation_loss = 3.9321184158325195Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 4 s.
+[27/10/2022 12:13:14] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 2048 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.16813187301158905
+* Loss = 3.1700522899627686
+* validation_accurancy = 0.07456140220165253
+* validation_loss = 3.9719831943511963Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 7 s.
+[27/10/2022 12:13:21] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 4096 neurones 
+* 50 epoque(s) 
+* batch_size : 50 Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.16923077404499054
+* Loss = 3.0453944206237793
+* validation_accurancy = 0.0833333358168602
+* validation_loss = 4.003639221191406Test terminé
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 0 m et 10 s.
