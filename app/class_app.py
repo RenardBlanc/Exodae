@@ -104,8 +104,9 @@ class fg():
     print(1)
 
 class fp():
+
     '''Fonction sur les profils'''
-    x,ally,nom_profil,marchepas = format.coordinate(dir = r"data/Airfoil_Coordinate")
+    x,ally,nom_profil,marchepas = format.coordinate()
     aire_all = lb.air_profils(x,ally)
     table=label_fin.all_data_table(ally,nom_profil,aire_all,dir = r'data/Airfoil_Polar')
     
