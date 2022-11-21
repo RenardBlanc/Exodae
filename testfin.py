@@ -23,7 +23,7 @@ def test_fin(M,Re,number_of_epochs_test = 500):
 
     x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_class = pre_process_CNN.data_CNN(M,Re)
     
-    report_file_path = os.path.join(r'CNN\results', 'mod_4_M_{}_Re_{}.txt'.format(M,Re))
+    report_file_path = os.path.join(r'CNN/results', 'mod_4_M_{}_Re_{}.txt'.format(M,Re))
     print('ok')
     report_file = open(report_file_path, "a")
     # Nombre de coordonnées et de profils
