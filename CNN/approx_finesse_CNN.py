@@ -522,6 +522,7 @@ class test_param_CNN():
         report_file.write(text_start)
         text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de neurones \n-----------------------------------------------------\n \n"
         report_file.write(text_start)
+        
         # Test de différents nombre de neurones sur 
         # la couche entierement connectée
         nb_neurone_list = [4,16,64,128,256,512,1024,2048,4096] 
@@ -1611,7 +1612,7 @@ class test_param_CNN():
         report_file.write(str(loss_test)+ '\n')
         report_file.close()
 
-    def mod_4(M,Re,number_of_epochs_test = 500):
+    def mod_4(M,Re,number_of_epochs_test = 500,toTest = ['neurone','epoque','paquet','filtre','noyau','drop']):
         mainFileName = pre_process_CNN.createMainFile_CNN('results')
         x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_class = pre_process_CNN.data_CNN(M,Re)
         # Nombre de coordonnées et de profils
@@ -1623,460 +1624,472 @@ class test_param_CNN():
         text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nouveau set d'experience \n-----------------------------------------------------\n \n"
         report_file.write(text_start)
         
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de neurones \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de neurones sur 
-        # la couche entierement connectée
-        nb_neurone_list = [4,16,64,128,256,512,1024,2048,4096] 
-        number_of_epochs = number_of_epochs_test
-        batch_size = 50
-        nb_filter_1 = 64
-        kernel_size_1 = 3
-        pool_size_1 = 3
-        drop1 = 0.5
-        nb_filter_2 = 64
-        kernel_size_2 = 3
-        pool_size_2 = 3
-        drop2 = 0.5
-        nb_filter_3 = 64
-        kernel_size_3 = 3
-        pool_size_3 = 3
-        drop3 = 0.5
-        # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
-        for nb_neurone in nb_neurone_list:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+        if 'neurone' in toTest:
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de neurones \n-----------------------------------------------------\n \n"
             report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de neurones \n"
-        report_file.write(text_start)
-        report_file.write(str(nb_neurone_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre d'epoque \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de epoques 
-        nb_neurone = 1024
-        if number_of_epochs_test ==500:
-            number_of_epochs_list = [1,10,100,200,500,1000,1500,2000,3000,5000,10000]
-        else: 
-            number_of_epochs_list = [number_of_epochs_test]
-        batch_size = 50
-        nb_filter_1 = 64
-        kernel_size_1 = 3
-        pool_size_1 = 3
-        drop1 = 0.5
-        nb_filter_2 = 64
-        kernel_size_2 = 3
-        pool_size_2 = 3
-        drop2 = 0.5
-        nb_filter_3 = 64
-        kernel_size_3 = 3
-        pool_size_3 = 3
-        drop3 = 0.5
-        # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
+            print(text_start)
+            # Test de différents nombre de neurones sur 
+            # la couche entierement connectée
+            nb_neurone_list = [4,16,64,128,256,512,1024,2048,4096] 
+            number_of_epochs = number_of_epochs_test
+            batch_size = 50
+            nb_filter_1 = 64
+            kernel_size_1 = 3
+            pool_size_1 = 3
+            drop1 = 0.5
+            nb_filter_2 = 64
+            kernel_size_2 = 3
+            pool_size_2 = 3
+            drop2 = 0.5
+            nb_filter_3 = 64
+            kernel_size_3 = 3
+            pool_size_3 = 3
+            drop3 = 0.5
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
+            for nb_neurone in nb_neurone_list:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de neurones \n"
+            report_file.write(text_start)
+            report_file.write(str(nb_neurone_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
 
-        for number_of_epochs in number_of_epochs_list:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+        if 'epoque' in toTest:
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre d'epoque \n-----------------------------------------------------\n \n"
             report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre d'epoque \n"
-        report_file.write(text_start)
-        report_file.write(str(number_of_epochs_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombres de paquet \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de paquet 
-        nb_neurone = 1024
-        number_of_epochs = number_of_epochs_test
-        batch_size_list = [5,10,20,50,100,200,400,500,1000]
-        nb_filter_1 = 64
-        kernel_size_1 = 3
-        pool_size_1 = 3
-        drop1 = 0.5
-        nb_filter_2 = 64
-        kernel_size_2 = 3
-        pool_size_2 = 3
-        drop2 = 0.5
-        nb_filter_3 = 64
-        kernel_size_3 = 3
-        pool_size_3 = 3
-        drop3 = 0.5
-        # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
-        for batch_size in batch_size_list:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
-            report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de paquet \n"
-        report_file.write(text_start)
-        report_file.write(str(batch_size_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de filtres \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de filtres 
-        nb_neurone = 1024
-        number_of_epochs = number_of_epochs_test
-        batch_size = 50
-        filtr_list = [64,128,256,512,1024]
-        filtr_comb = combinations_with_replacement(filtr_list,3)
-        kernel_size_1 = 3
-        pool_size_1 = 3
-        drop1 = 0.5
-        kernel_size_2 = 3
-        pool_size_2 = 3
-        drop2 = 0.5
-        kernel_size_3 = 3
-        pool_size_3 = 3
-        drop3 = 0.5
-        # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
-        for filters in filtr_comb:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,filters[0],kernel_size_1,pool_size_1,drop1,filters[1],kernel_size_2,pool_size_2,drop2,filters[2],kernel_size_3,pool_size_3,drop3)
-            report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = filters[0], kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = filters[1], kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = filters[2], kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de filtres \n"
-        report_file.write(text_start)
-        report_file.write(str(filtr_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
+            print(text_start)
+            # Test de différents nombre de epoques 
+            nb_neurone = 1024
+            if number_of_epochs_test ==500:
+                number_of_epochs_list = [1,10,100,200,500,1000,1500,2000,3000,5000,10000]
+            else: 
+                number_of_epochs_list = [number_of_epochs_test]
+            batch_size = 50
+            nb_filter_1 = 64
+            kernel_size_1 = 3
+            pool_size_1 = 3
+            drop1 = 0.5
+            nb_filter_2 = 64
+            kernel_size_2 = 3
+            pool_size_2 = 3
+            drop2 = 0.5
+            nb_filter_3 = 64
+            kernel_size_3 = 3
+            pool_size_3 = 3
+            drop3 = 0.5
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
 
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de noyaux \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de noyaux 
-        nb_neurone = 1024
-        number_of_epochs = number_of_epochs_test
-        batch_size = 50
-        kernel_size_list = [1,2,3,4,5,6]
-        kernel_comb = combinations_with_replacement(kernel_size_list,3)
-        nb_filter_1 = 64
-        pool_size_1 = 3
-        drop1 = 0.5
-        nb_filter_2 = 64
-        pool_size_2 = 3
-        drop2 = 0.5
-        nb_filter_3 = 64
-        pool_size_3 = 3
-        drop3 = 0.5
-        # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
-        for kernels in kernel_comb:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernels[0],pool_size_1,drop1,nb_filter_2,kernels[1],pool_size_2,drop2,nb_filter_3,kernels[2],pool_size_3,drop3)
+            for number_of_epochs in number_of_epochs_list:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre d'epoque \n"
             report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernels[0], pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernels[1], pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernels[2], pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de noyaux \n"
-        report_file.write(text_start)
-        report_file.write(str(kernel_size_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
-        text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de drop \n-----------------------------------------------------\n \n"
-        report_file.write(text_start)
-        print(text_start)
-        # Test de différents nombre de drop 
-        nb_neurone = 1024
-        number_of_epochs = number_of_epochs_test
-        batch_size = 50
-        drop_list = [0.05,0.1,0.2,0.25,0.3,0.5]
-        drop_comb = combinations_with_replacement(drop_list,3)
-        nb_filter_1 = 64
-        kernel_size_1 = 3
-        pool_size_1 = 3
-        nb_filter_2 = 64
-        kernel_size_2 = 3
-        pool_size_2 = 3
-        nb_filter_3 = 64
-        kernel_size_3 = 3
-        pool_size_3 = 3
-         # Définition des listes de resultats
-        accurancy_train = []
-        loss_train = []
-        accurancy_val_train = []
-        loss_val_train = []
-        accurancy_test = []
-        loss_test = []
+            report_file.write(str(number_of_epochs_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
 
-        for drops in drop_comb:
-            text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drops[0],nb_filter_2,kernel_size_2,pool_size_2,drops[1],nb_filter_3,kernel_size_3,pool_size_3,drops[2])
+        if 'paquet' in toTest:
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombres de paquet \n-----------------------------------------------------\n \n"
             report_file.write(text_start)
-            start = time.perf_counter() # temps de début de l'entrainement 
-            modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drops[0],nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drops[1],nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drops[2],fct_activation = 'relu',nb_neurone = nb_neurone)
-            modele.compile(loss='categorical_crossentropy',
-                            optimizer='adam', metrics=['accuracy'])
-            history = modele.fit([x_train,x_train,x_train],
-                                y_train_hot,
-                                batch_size=batch_size,
-                                epochs=number_of_epochs,
-                                validation_split=0.2,
-                                verbose=0)
-            report_file.write("\nEntrainement terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_train.append(history.history['accuracy'][-1])
-            loss_train.append(history.history['loss'][-1])
-            accurancy_val_train.append(history.history['val_accuracy'][-1])
-            loss_val_train.append(history.history['val_loss'][-1])
-            # -------------
-            history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
-            # Temps ecoulé
-            end = time.perf_counter()  # temps de fin
-            report_file.write("\nTest terminé\n")
-            results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
-            report_file.write(results)
-            # -------------
-            # Ajout au listes
-            # -------------
-            accurancy_test.append(history_test[1])
-            loss_test.append(history_test[0])
-            # -------------
-            report_file.write("----------------------------------------------------------------------\n")
-            minute = round(end-start) // 60
-            secondes = round(end-start) % 60
-            report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
-            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de drop \n"
-        report_file.write(text_start)
-        report_file.write(str(drop_list)+ '\n')
-        report_file.write(str(accurancy_train) + '\n')
-        report_file.write(str(loss_train)+ '\n')
-        report_file.write(str(accurancy_val_train)+ '\n')
-        report_file.write(str(loss_val_train)+ '\n')
-        report_file.write(str(accurancy_test)+ '\n')
-        report_file.write(str(loss_test)+ '\n')
+            print(text_start)
+            # Test de différents nombre de paquet 
+            nb_neurone = 1024
+            number_of_epochs = number_of_epochs_test
+            batch_size_list = [5,10,20,50,100,200,400,500,1000]
+            nb_filter_1 = 64
+            kernel_size_1 = 3
+            pool_size_1 = 3
+            drop1 = 0.5
+            nb_filter_2 = 64
+            kernel_size_2 = 3
+            pool_size_2 = 3
+            drop2 = 0.5
+            nb_filter_3 = 64
+            kernel_size_3 = 3
+            pool_size_3 = 3
+            drop3 = 0.5
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
+            for batch_size in batch_size_list:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de paquet \n"
+            report_file.write(text_start)
+            report_file.write(str(batch_size_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
+            
+        if 'filtre' in toTest: 
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de filtres \n-----------------------------------------------------\n \n"
+            report_file.write(text_start)
+            print(text_start)
+            # Test de différents nombre de filtres 
+            nb_neurone = 1024
+            number_of_epochs = number_of_epochs_test
+            batch_size = 50
+            filtr_list = [64,128,256,512,1024]
+            filtr_comb = combinations_with_replacement(filtr_list,3)
+            kernel_size_1 = 3
+            pool_size_1 = 3
+            drop1 = 0.5
+            kernel_size_2 = 3
+            pool_size_2 = 3
+            drop2 = 0.5
+            kernel_size_3 = 3
+            pool_size_3 = 3
+            drop3 = 0.5
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
+            for filters in filtr_comb:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,filters[0],kernel_size_1,pool_size_1,drop1,filters[1],kernel_size_2,pool_size_2,drop2,filters[2],kernel_size_3,pool_size_3,drop3)
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = filters[0], kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = filters[1], kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = filters[2], kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de filtres \n"
+            report_file.write(text_start)
+            report_file.write(str(filtr_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
+
+        
+        # Test de différents nombre de noyaux
+        if 'noyau' in toTest: 
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de noyaux \n-----------------------------------------------------\n \n"
+            report_file.write(text_start)
+            print(text_start)
+            nb_neurone = 1024
+            number_of_epochs = number_of_epochs_test
+            batch_size = 50
+            kernel_size_list = [1,2,3,4,5,6]
+            kernel_comb = combinations_with_replacement(kernel_size_list,3)
+            nb_filter_1 = 64
+            pool_size_1 = 3
+            drop1 = 0.5
+            nb_filter_2 = 64
+            pool_size_2 = 3
+            drop2 = 0.5
+            nb_filter_3 = 64
+            pool_size_3 = 3
+            drop3 = 0.5
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
+            for kernels in kernel_comb:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernels[0],pool_size_1,drop1,nb_filter_2,kernels[1],pool_size_2,drop2,nb_filter_3,kernels[2],pool_size_3,drop3)
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernels[0], pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernels[1], pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernels[2], pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de noyaux \n"
+            report_file.write(text_start)
+            report_file.write(str(kernel_size_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
+        
+
+        if 'drop' in toTest:
+            text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Nombre de drop \n-----------------------------------------------------\n \n"
+            report_file.write(text_start)
+            print(text_start)
+            # Test de différents nombre de drop 
+            nb_neurone = 1024
+            number_of_epochs = number_of_epochs_test
+            batch_size = 50
+            drop_list = [0.05,0.1,0.2,0.25,0.3,0.5]
+            drop_comb = combinations_with_replacement(drop_list,3)
+            nb_filter_1 = 64
+            kernel_size_1 = 3
+            pool_size_1 = 3
+            nb_filter_2 = 64
+            kernel_size_2 = 3
+            pool_size_2 = 3
+            nb_filter_3 = 64
+            kernel_size_3 = 3
+            pool_size_3 = 3
+            # Définition des listes de resultats
+            accurancy_train = []
+            loss_train = []
+            accurancy_val_train = []
+            loss_val_train = []
+            accurancy_test = []
+            loss_test = []
+            
+            for drops in drop_comb:
+                text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'expérience \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drops[0],nb_filter_2,kernel_size_2,pool_size_2,drops[1],nb_filter_3,kernel_size_3,pool_size_3,drops[2])
+                report_file.write(text_start)
+                start = time.perf_counter() # temps de début de l'entrainement 
+                modele= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drops[0],nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drops[1],nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drops[2],fct_activation = 'relu',nb_neurone = nb_neurone)
+                modele.compile(loss='categorical_crossentropy',
+                                optimizer='adam', metrics=['accuracy'])
+                history = modele.fit([x_train,x_train,x_train],
+                                    y_train_hot,
+                                    batch_size=batch_size,
+                                    epochs=number_of_epochs,
+                                    validation_split=0.2,
+                                    verbose=0)
+                report_file.write("\nEntrainement terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_train.append(history.history['accuracy'][-1])
+                loss_train.append(history.history['loss'][-1])
+                accurancy_val_train.append(history.history['val_accuracy'][-1])
+                loss_val_train.append(history.history['val_loss'][-1])
+                # -------------
+                history_test = modele.evaluate([x_test,x_test,x_test],y_test_hot)
+                # Temps ecoulé
+                end = time.perf_counter()  # temps de fin
+                report_file.write("\nTest terminé\n")
+                results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n".format(history_test[1],history_test[1])
+                report_file.write(results)
+                # -------------
+                # Ajout au listes
+                # -------------
+                accurancy_test.append(history_test[1])
+                loss_test.append(history_test[0])
+                # -------------
+                report_file.write("----------------------------------------------------------------------\n")
+                minute = round(end-start) // 60
+                secondes = round(end-start) % 60
+                report_file.write(f"Temps totale écoulé durant le test: {minute} m et {secondes} s.\n \n")
+                text_start = "\n-----------------------------------------------------\n \n[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Resultat de l'experience sur le nombre de drop \n"
+            report_file.write(text_start)
+            report_file.write(str(drop_list)+ '\n')
+            report_file.write(str(accurancy_train) + '\n')
+            report_file.write(str(loss_train)+ '\n')
+            report_file.write(str(accurancy_val_train)+ '\n')
+            report_file.write(str(loss_val_train)+ '\n')
+            report_file.write(str(accurancy_test)+ '\n')
+            report_file.write(str(loss_test)+ '\n')
         
         report_file.close()
 

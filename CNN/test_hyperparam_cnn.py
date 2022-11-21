@@ -20,7 +20,7 @@ if __name__ == "__main__":
         Re = int(sys.argv[2]) 
         nb_epoch_test = int(sys.argv[3]) 
         if nb_epoch_test ==0:
-            #test_param_CNN.mod_1(Mach,Re)
+            test_param_CNN.mod_1(Mach,Re)
             test_param_CNN.mod_2(Mach,Re)
             test_param_CNN.mod_3(Mach,Re)
             test_param_CNN.mod_4(Mach,Re)
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         if nb_epoch_test ==0:
             test_model(Mach,Re)
         else: 
-            test_model(Mach,Re,number_of_epochs_test=nb_epoch_test)
+            test_model(Mach,Re,number_of_epochs_test=nb_epoch_test,toTest = ['drop'])
     
     else:
         raise Exception(

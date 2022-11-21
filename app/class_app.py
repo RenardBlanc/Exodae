@@ -108,6 +108,7 @@ class fp():
     x,ally,nom_profil,marchepas = format.coordinate(dir = r"data/Airfoil_Coordinate")
     aire_all = lb.air_profils(x,ally)
     table=label_fin.all_data_table(ally,nom_profil,aire_all,dir = r'data/Airfoil_Polar')
+    
     def all_profils():
         # On cherche le nom de tous les profils dans la base de données
         return fp.nom_profil
