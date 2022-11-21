@@ -20,6 +20,39 @@ sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath('airfoil_Opti
 from data.pre_processing import *
 from Clustering.similaire_cluster import *
 
+class fp():
+
+    # Get all data
+    all_airfoils = scrap.airfoils_name()
+    scrap.airfoils_coordinate(all_airfoils)
+    le.allPolar(Re_list=[50000,100000,200000,500000,1000000],M_list=0)
+
+    '''Fonction sur les profils'''
+    x,ally,nom_profil,marchepas = format.coordinate(dir = r'data/Airfoil_Coordinate')
+    aire_all = lb.air_profils(x,ally)
+    table=label_fin.all_data_table(ally,nom_profil,aire_all,dir = r'data/Airfoil_Polar')
+    
+    def all_profils():
+        # On cherche le nom de tous les profils dans la base de données
+        return fp.nom_profil
+
+    def all_data():
+        print(fp.table)
+
+    def data(name):
+        try :
+            table_all = fp.table
+            print(table_all.loc[table_all.index == name])
+        except : 
+            lg.error('Entrez un nom de profil présent dans la base de donnée')
+
+    def plot(name):
+        try :
+            format.plot_airfoil(name)
+        except :
+            lg.error('Entrez un nom de profil présent dans la base de donnée')
+    
+    
 class fcl():
     # Fonction sur la classification de profils avec le clustering
     x,ally,nom_profil,marchepas = format.coordinate(dir = r"data/Airfoil_Coordinate")
@@ -102,37 +135,3 @@ class fcn():
 class fg():
     # Fonction sur la géneration de profils avec le GAN
     print(1)
-
-class fp():
-
-    # Get all data
-    all_airfoils = scrap.airfoils_name()
-    scrap.airfoils_coordinate(all_airfoils)
-    le.allPolar(Re_list=[50000,100000,200000,500000,1000000],M_list=0)
-
-    '''Fonction sur les profils'''
-    x,ally,nom_profil,marchepas = format.coordinate(dir = r'data/Airfoil_Coordinate')
-    aire_all = lb.air_profils(x,ally)
-    table=label_fin.all_data_table(ally,nom_profil,aire_all,dir = r'data/Airfoil_Polar')
-    
-    def all_profils():
-        # On cherche le nom de tous les profils dans la base de données
-        return fp.nom_profil
-
-    def all_data():
-        print(fp.table)
-
-    def data(name):
-        try :
-            table_all = fp.table
-            print(table_all.loc[table_all.index == name])
-        except : 
-            lg.error('Entrez un nom de profil présent dans la base de donnée')
-
-    def plot(name):
-        try :
-            format.plot_airfoil(name)
-        except :
-            lg.error('Entrez un nom de profil présent dans la base de donnée')
-    
-    
