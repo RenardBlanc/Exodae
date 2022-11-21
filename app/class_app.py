@@ -105,6 +105,11 @@ class fg():
 
 class fp():
 
+    # Get all data
+    all_airfoils = scrap.airfoils_name()
+    scrap.airfoils_coordinate(all_airfoils)
+    le.allPolar(Re_list=[50000,100000,200000,500000,1000000],M_list=0)
+    
     '''Fonction sur les profils'''
     x,ally,nom_profil,marchepas = format.coordinate()
     aire_all = lb.air_profils(x,ally)
