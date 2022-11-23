@@ -4290,3 +4290,2014 @@ Temps totale écoulé durant le test: 13 m et 1 s.
 [0.09445585310459137, 0.08008213341236115, 0.09650924056768417, 0.08418890833854675, 0.10266940295696259, 0.09445585310459137, 0.09856262803077698, 0.09034907817840576, 0.08624230325222015, 0.09445585310459137, 0.09650924056768417, 0.08624230325222015, 0.09034907817840576, 0.09034907817840576, 0.09240246564149857, 0.10061601549386978, 0.10061601549386978, 0.09240246564149857, 0.1149897351861, 0.1067761778831482, 0.10061601549386978, 0.08829569071531296, 0.09445585310459137, 0.09650924056768417, 0.09034907817840576, 0.10266940295696259, 0.10472279042005539, 0.10472279042005539, 0.08008213341236115, 0.09856262803077698, 0.09240246564149857, 0.09856262803077698, 0.09650924056768417, 0.10061601549386978, 0.09856262803077698, 0.108829565346241, 0.10472279042005539, 0.09034907817840576, 0.09034907817840576, 0.09445585310459137, 0.08624230325222015, 0.08829569071531296, 0.09650924056768417, 0.09240246564149857, 0.09650924056768417, 0.10061601549386978, 0.08829569071531296, 0.08624230325222015, 0.08829569071531296, 0.09856262803077698, 0.08829569071531296, 0.08213552087545395, 0.09034907817840576, 0.09856262803077698, 0.09856262803077698, 0.09856262803077698]
 [11.335792541503906, 12.68030071258545, 12.140277862548828, 12.178474426269531, 13.097930908203125, 12.201035499572754, 12.483647346496582, 12.943403244018555, 12.55760669708252, 12.630431175231934, 12.898792266845703, 12.98623275756836, 13.189800262451172, 13.273116111755371, 13.275323867797852, 13.35718822479248, 12.800448417663574, 13.103717803955078, 13.124284744262695, 13.990428924560547, 13.310738563537598, 12.858107566833496, 12.161954879760742, 12.965526580810547, 13.302986145019531, 13.443604469299316, 13.952737808227539, 13.331655502319336, 13.253472328186035, 13.46216869354248, 13.229090690612793, 14.129890441894531, 13.307324409484863, 13.843982696533203, 13.403266906738281, 13.141777992248535, 13.176283836364746, 13.922289848327637, 13.707226753234863, 12.585163116455078, 13.499860763549805, 14.198659896850586, 13.979486465454102, 13.814064025878906, 14.046027183532715, 14.09145736694336, 12.892484664916992, 13.651509284973145, 13.499961853027344, 13.7288818359375, 13.250113487243652, 13.84072494506836, 13.885452270507812, 14.136678695678711, 13.850160598754883, 13.880953788757324]
 
+[21/11/2022 22:57:50] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.05 
+ [21/11/2022 22:59:38] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.05 
+ [21/11/2022 23:02:34] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.05 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9527472257614136
+* Loss = 0.1666492074728012
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 18.405113220214844
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[21/11/2022 23:22:58] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.1 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9384615421295166
+* Loss = 0.20748712122440338
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 17.39374351501465
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[21/11/2022 23:43:21] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8956043720245361
+* Loss = 0.3153262436389923
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 17.657861709594727
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12114989757537842
+* Loss = 0.12114989757537842
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 21 m et 23 s.
+ 
+[22/11/2022 00:04:45] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9582417607307434
+* Loss = 0.18097065389156342
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 16.56291961669922
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 5 s.
+ 
+[22/11/2022 00:24:49] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9549450278282166
+* Loss = 0.17361503839492798
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 16.10680389404297
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12114989757537842
+* Loss = 0.12114989757537842
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 00:45:13] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.05 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8956043720245361
+* Loss = 0.36482203006744385
+* validation_accurancy = 0.11403508484363556
+* validation_loss = 17.144657135009766
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10061601549386978
+* Loss = 0.10061601549386978
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 01:05:36] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.1 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9340659379959106
+* Loss = 0.19268374145030975
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 18.038150787353516
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1149897351861
+* Loss = 0.1149897351861
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 01:26:00] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9318681359291077
+* Loss = 0.22417151927947998
+* validation_accurancy = 0.14473684132099152
+* validation_loss = 16.882610321044922
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 01:46:23] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9307692050933838
+* Loss = 0.21475961804389954
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 16.517614364624023
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 46 s.
+ 
+[22/11/2022 02:06:09] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8890109658241272
+* Loss = 0.3330554962158203
+* validation_accurancy = 0.11403508484363556
+* validation_loss = 16.578125
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.108829565346241
+* Loss = 0.108829565346241
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 02:26:32] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9681318402290344
+* Loss = 0.15034502744674683
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 16.155729293823242
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12525667250156403
+* Loss = 0.12525667250156403
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 21 m et 23 s.
+ 
+[22/11/2022 02:47:56] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9263736009597778
+* Loss = 0.24858513474464417
+* validation_accurancy = 0.10964912176132202
+* validation_loss = 16.256071090698242
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 21 m et 23 s.
+ 
+[22/11/2022 03:09:19] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9582417607307434
+* Loss = 0.15612120926380157
+* validation_accurancy = 0.14473684132099152
+* validation_loss = 15.341636657714844
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1149897351861
+* Loss = 0.1149897351861
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 03:29:43] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9560439586639404
+* Loss = 0.14991159737110138
+* validation_accurancy = 0.1184210553765297
+* validation_loss = 15.570843696594238
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.11704312264919281
+* Loss = 0.11704312264919281
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 34 s.
+ 
+[22/11/2022 03:49:17] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9296703338623047
+* Loss = 0.21040764451026917
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 15.775606155395508
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12114989757537842
+* Loss = 0.12114989757537842
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 30 s.
+ 
+[22/11/2022 04:08:47] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9505494236946106
+* Loss = 0.16841235756874084
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 16.12651824951172
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.11909651011228561
+* Loss = 0.11909651011228561
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 04:29:11] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.898901104927063
+* Loss = 0.34019917249679565
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 14.8204984664917
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 04:49:34] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9197801947593689
+* Loss = 0.25764647126197815
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 15.529706001281738
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 21 m et 33 s.
+ 
+[22/11/2022 05:11:07] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9395604133605957
+* Loss = 0.19467033445835114
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 16.032337188720703
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12320328503847122
+* Loss = 0.12320328503847122
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 05:31:31] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9208791255950928
+* Loss = 0.2576570510864258
+* validation_accurancy = 0.10964912176132202
+* validation_loss = 14.875818252563477
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 05:51:54] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.05 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9351648092269897
+* Loss = 0.20132575929164886
+* validation_accurancy = 0.1184210553765297
+* validation_loss = 14.022459030151367
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09034907817840576
+* Loss = 0.09034907817840576
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 06:12:17] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.1 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9098901152610779
+* Loss = 0.2848546504974365
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 17.242067337036133
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 23 s.
+ 
+[22/11/2022 06:31:41] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9538461565971375
+* Loss = 0.1832616776227951
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 16.37755012512207
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1108829602599144
+* Loss = 0.1108829602599144
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 39 s.
+ 
+[22/11/2022 06:51:19] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9153845906257629
+* Loss = 0.27689409255981445
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 16.16338539123535
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 07:11:43] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8956043720245361
+* Loss = 0.3436109125614166
+* validation_accurancy = 0.14473684132099152
+* validation_loss = 15.249554634094238
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1108829602599144
+* Loss = 0.1108829602599144
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 07:32:06] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.1 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9318681359291077
+* Loss = 0.19709043204784393
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 15.569306373596191
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 07:52:30] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9340659379959106
+* Loss = 0.20404034852981567
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 16.339492797851562
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09856262803077698
+* Loss = 0.09856262803077698
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 39 s.
+ 
+[22/11/2022 08:12:09] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9373626112937927
+* Loss = 0.20073482394218445
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 16.143489837646484
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 08:32:32] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9351648092269897
+* Loss = 0.21200726926326752
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 16.161396026611328
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09650924056768417
+* Loss = 0.09650924056768417
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 08:52:56] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9505494236946106
+* Loss = 0.1685972809791565
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 15.094367027282715
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.12525667250156403
+* Loss = 0.12525667250156403
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 09:13:19] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9197801947593689
+* Loss = 0.24309268593788147
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 15.640890121459961
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.108829565346241
+* Loss = 0.108829565346241
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 28 s.
+ 
+[22/11/2022 09:32:47] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9659340381622314
+* Loss = 0.13024593889713287
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 15.812704086303711
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 23 s.
+ 
+[22/11/2022 09:52:10] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9241757988929749
+* Loss = 0.25738242268562317
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 13.8690767288208
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1108829602599144
+* Loss = 0.1108829602599144
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 52 s.
+ 
+[22/11/2022 10:12:02] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9494505524635315
+* Loss = 0.1965404748916626
+* validation_accurancy = 0.16228070855140686
+* validation_loss = 14.28406810760498
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09445585310459137
+* Loss = 0.09445585310459137
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 58 s.
+ 
+[22/11/2022 10:32:00] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9329670071601868
+* Loss = 0.22790201008319855
+* validation_accurancy = 0.1184210553765297
+* validation_loss = 14.471282005310059
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 31 s.
+ 
+[22/11/2022 10:51:31] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.1 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9659340381622314
+* Loss = 0.15166687965393066
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 13.649107933044434
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10061601549386978
+* Loss = 0.10061601549386978
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 46 s.
+ 
+[22/11/2022 11:11:17] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.2 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9593406319618225
+* Loss = 0.17149993777275085
+* validation_accurancy = 0.11403508484363556
+* validation_loss = 15.567815780639648
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 11:31:41] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8802197575569153
+* Loss = 0.3692625164985657
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 14.860522270202637
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 11:52:04] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8934065699577332
+* Loss = 0.33675453066825867
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 14.494098663330078
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.08418890833854675
+* Loss = 0.08418890833854675
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 41 s.
+ 
+[22/11/2022 12:12:45] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.2 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9472527503967285
+* Loss = 0.17887160181999207
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 14.805872917175293
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1129363477230072
+* Loss = 0.1129363477230072
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 47 s.
+ 
+[22/11/2022 12:32:32] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9692307710647583
+* Loss = 0.12706001102924347
+* validation_accurancy = 0.10964912176132202
+* validation_loss = 15.986321449279785
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 12:52:56] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8769230842590332
+* Loss = 0.3870088458061218
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 14.218070030212402
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10472279042005539
+* Loss = 0.10472279042005539
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 44 s.
+ 
+[22/11/2022 13:12:39] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9406593441963196
+* Loss = 0.2012958973646164
+* validation_accurancy = 0.1184210553765297
+* validation_loss = 14.217103958129883
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.11909651011228561
+* Loss = 0.11909651011228561
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 53 s.
+ 
+[22/11/2022 13:32:33] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9373626112937927
+* Loss = 0.20673760771751404
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 14.153600692749023
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.108829565346241
+* Loss = 0.108829565346241
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 13:52:56] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9461538195610046
+* Loss = 0.1819000542163849
+* validation_accurancy = 0.13596491515636444
+* validation_loss = 14.237524032592773
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 19 m et 42 s.
+ 
+[22/11/2022 14:12:38] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.2 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9175823926925659
+* Loss = 0.29342415928840637
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 13.521791458129883
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 14:33:01] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.25 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9604395627975464
+* Loss = 0.1470170021057129
+* validation_accurancy = 0.14473684132099152
+* validation_loss = 14.56932544708252
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1149897351861
+* Loss = 0.1149897351861
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 14:53:25] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8483516573905945
+* Loss = 0.4861134886741638
+* validation_accurancy = 0.1535087674856186
+* validation_loss = 14.02878475189209
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10266940295696259
+* Loss = 0.10266940295696259
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 20 s.
+ 
+[22/11/2022 15:13:45] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.25 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9505494236946106
+* Loss = 0.1645389050245285
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 14.230325698852539
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10061601549386978
+* Loss = 0.10061601549386978
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 15:34:08] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.8626373410224915
+* Loss = 0.45293566584587097
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 14.812007904052734
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09650924056768417
+* Loss = 0.09650924056768417
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 15:54:32] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9219779968261719
+* Loss = 0.26985910534858704
+* validation_accurancy = 0.12719298899173737
+* validation_loss = 13.527508735656738
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09650924056768417
+* Loss = 0.09650924056768417
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 16:14:55] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.25 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9384615421295166
+* Loss = 0.2035721391439438
+* validation_accurancy = 0.1315789520740509
+* validation_loss = 12.951169967651367
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.10061601549386978
+* Loss = 0.10061601549386978
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 23 s.
+ 
+[22/11/2022 16:35:18] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.3 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.3 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9593406319618225
+* Loss = 0.14502182602882385
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 14.306100845336914
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 16:55:42] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.3 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.3 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9560439586639404
+* Loss = 0.17079323530197144
+* validation_accurancy = 0.14035087823867798
+* validation_loss = 13.432415008544922
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.1067761778831482
+* Loss = 0.1067761778831482
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 24 s.
+ 
+[22/11/2022 17:16:06] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.3 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9417582154273987
+* Loss = 0.20401659607887268
+* validation_accurancy = 0.14912280440330505
+* validation_loss = 12.578733444213867
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.08008213341236115
+* Loss = 0.08008213341236115
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 34 s.
+ 
+[22/11/2022 17:36:40] Début de l'expérience 
+-----------------------------------------------------
+ 
+Les paramètres de cette experience sont: 
+* 87 classes 
+* 1024 neurones 
+* 500 epoque(s) 
+* batch_size : 50 
+* nb_filter_1 : 64 
+* kernel_size_1 : 3 
+* pool_size_1 : 3 
+* drop1 : 0.5 
+* nb_filter_2 : 64 
+* kernel_size_2 : 3 
+* pool_size_2 : 3 
+* drop2 : 0.5 
+* nb_filter_3 : 64 
+* kernel_size_3 : 3 
+* pool_size_3 : 3 
+* drop3 : 0.5 
+ 
+Entrainement terminé
+Les resultats sont les suivants:
+* Accurancy = 0.9120879173278809
+* Loss = 0.2778719365596771
+* validation_accurancy = 0.12280701845884323
+* validation_loss = 10.995349884033203
+
+Test terminé
+Les resultats sont les suivants:
+* Accurancy = 0.09856262803077698
+* Loss = 0.09856262803077698
+----------------------------------------------------------------------
+Temps totale écoulé durant le test: 20 m et 16 s.
+ 
+
+-----------------------------------------------------
+ 
+[22/11/2022 17:56:56] Resultat de l'experience sur le nombre de drop 
+[0.05, 0.1, 0.2, 0.25, 0.3, 0.5]
+[0.9527472257614136, 0.9384615421295166, 0.8956043720245361, 0.9582417607307434, 0.9549450278282166, 0.8956043720245361, 0.9340659379959106, 0.9318681359291077, 0.9307692050933838, 0.8890109658241272, 0.9681318402290344, 0.9263736009597778, 0.9582417607307434, 0.9560439586639404, 0.9296703338623047, 0.9505494236946106, 0.898901104927063, 0.9197801947593689, 0.9395604133605957, 0.9208791255950928, 0.9351648092269897, 0.9098901152610779, 0.9538461565971375, 0.9153845906257629, 0.8956043720245361, 0.9318681359291077, 0.9340659379959106, 0.9373626112937927, 0.9351648092269897, 0.9505494236946106, 0.9197801947593689, 0.9659340381622314, 0.9241757988929749, 0.9494505524635315, 0.9329670071601868, 0.9659340381622314, 0.9593406319618225, 0.8802197575569153, 0.8934065699577332, 0.9472527503967285, 0.9692307710647583, 0.8769230842590332, 0.9406593441963196, 0.9373626112937927, 0.9461538195610046, 0.9175823926925659, 0.9604395627975464, 0.8483516573905945, 0.9505494236946106, 0.8626373410224915, 0.9219779968261719, 0.9384615421295166, 0.9593406319618225, 0.9560439586639404, 0.9417582154273987, 0.9120879173278809]
+[0.1666492074728012, 0.20748712122440338, 0.3153262436389923, 0.18097065389156342, 0.17361503839492798, 0.36482203006744385, 0.19268374145030975, 0.22417151927947998, 0.21475961804389954, 0.3330554962158203, 0.15034502744674683, 0.24858513474464417, 0.15612120926380157, 0.14991159737110138, 0.21040764451026917, 0.16841235756874084, 0.34019917249679565, 0.25764647126197815, 0.19467033445835114, 0.2576570510864258, 0.20132575929164886, 0.2848546504974365, 0.1832616776227951, 0.27689409255981445, 0.3436109125614166, 0.19709043204784393, 0.20404034852981567, 0.20073482394218445, 0.21200726926326752, 0.1685972809791565, 0.24309268593788147, 0.13024593889713287, 0.25738242268562317, 0.1965404748916626, 0.22790201008319855, 0.15166687965393066, 0.17149993777275085, 0.3692625164985657, 0.33675453066825867, 0.17887160181999207, 0.12706001102924347, 0.3870088458061218, 0.2012958973646164, 0.20673760771751404, 0.1819000542163849, 0.29342415928840637, 0.1470170021057129, 0.4861134886741638, 0.1645389050245285, 0.45293566584587097, 0.26985910534858704, 0.2035721391439438, 0.14502182602882385, 0.17079323530197144, 0.20401659607887268, 0.2778719365596771]
+[0.12280701845884323, 0.1315789520740509, 0.12280701845884323, 0.14035087823867798, 0.13596491515636444, 0.11403508484363556, 0.1315789520740509, 0.14473684132099152, 0.13596491515636444, 0.11403508484363556, 0.13596491515636444, 0.10964912176132202, 0.14473684132099152, 0.1184210553765297, 0.13596491515636444, 0.13596491515636444, 0.12280701845884323, 0.12719298899173737, 0.1315789520740509, 0.10964912176132202, 0.1184210553765297, 0.1315789520740509, 0.12719298899173737, 0.1315789520740509, 0.14473684132099152, 0.13596491515636444, 0.14035087823867798, 0.1315789520740509, 0.12719298899173737, 0.12280701845884323, 0.14035087823867798, 0.13596491515636444, 0.13596491515636444, 0.16228070855140686, 0.1184210553765297, 0.14035087823867798, 0.11403508484363556, 0.1315789520740509, 0.14035087823867798, 0.12719298899173737, 0.10964912176132202, 0.14035087823867798, 0.1184210553765297, 0.14035087823867798, 0.13596491515636444, 0.14035087823867798, 0.14473684132099152, 0.1535087674856186, 0.14035087823867798, 0.12719298899173737, 0.12719298899173737, 0.1315789520740509, 0.12280701845884323, 0.14035087823867798, 0.14912280440330505, 0.12280701845884323]
+[18.405113220214844, 17.39374351501465, 17.657861709594727, 16.56291961669922, 16.10680389404297, 17.144657135009766, 18.038150787353516, 16.882610321044922, 16.517614364624023, 16.578125, 16.155729293823242, 16.256071090698242, 15.341636657714844, 15.570843696594238, 15.775606155395508, 16.12651824951172, 14.8204984664917, 15.529706001281738, 16.032337188720703, 14.875818252563477, 14.022459030151367, 17.242067337036133, 16.37755012512207, 16.16338539123535, 15.249554634094238, 15.569306373596191, 16.339492797851562, 16.143489837646484, 16.161396026611328, 15.094367027282715, 15.640890121459961, 15.812704086303711, 13.8690767288208, 14.28406810760498, 14.471282005310059, 13.649107933044434, 15.567815780639648, 14.860522270202637, 14.494098663330078, 14.805872917175293, 15.986321449279785, 14.218070030212402, 14.217103958129883, 14.153600692749023, 14.237524032592773, 13.521791458129883, 14.56932544708252, 14.02878475189209, 14.230325698852539, 14.812007904052734, 13.527508735656738, 12.951169967651367, 14.306100845336914, 13.432415008544922, 12.578733444213867, 10.995349884033203]
+[0.1067761778831482, 0.1129363477230072, 0.12114989757537842, 0.1129363477230072, 0.12114989757537842, 0.10061601549386978, 0.1149897351861, 0.1067761778831482, 0.10266940295696259, 0.108829565346241, 0.12525667250156403, 0.1067761778831482, 0.1149897351861, 0.11704312264919281, 0.12114989757537842, 0.11909651011228561, 0.1129363477230072, 0.1067761778831482, 0.12320328503847122, 0.1129363477230072, 0.09034907817840576, 0.1129363477230072, 0.1108829602599144, 0.10266940295696259, 0.1108829602599144, 0.1129363477230072, 0.09856262803077698, 0.10266940295696259, 0.09650924056768417, 0.12525667250156403, 0.108829565346241, 0.10266940295696259, 0.1108829602599144, 0.09445585310459137, 0.10266940295696259, 0.10061601549386978, 0.1067761778831482, 0.1067761778831482, 0.08418890833854675, 0.1129363477230072, 0.1067761778831482, 0.10472279042005539, 0.11909651011228561, 0.108829565346241, 0.10266940295696259, 0.1067761778831482, 0.1149897351861, 0.10266940295696259, 0.10061601549386978, 0.09650924056768417, 0.09650924056768417, 0.10061601549386978, 0.1067761778831482, 0.1067761778831482, 0.08008213341236115, 0.09856262803077698]
+[21.535938262939453, 19.18949317932129, 19.971179962158203, 19.35947608947754, 19.415653228759766, 18.901588439941406, 20.687660217285156, 19.072063446044922, 18.79051399230957, 19.203096389770508, 18.49932098388672, 18.50951385498047, 18.208820343017578, 18.1501522064209, 18.71192741394043, 19.792186737060547, 17.033153533935547, 18.60301399230957, 18.303600311279297, 17.8085880279541, 16.362619400024414, 20.364883422851562, 19.613054275512695, 18.595600128173828, 17.696626663208008, 18.16827392578125, 18.353750228881836, 18.33716583251953, 19.320159912109375, 17.517004013061523, 17.761886596679688, 18.36161231994629, 17.248172760009766, 17.381227493286133, 16.45061683654785, 16.37447738647461, 18.381563186645508, 17.42342185974121, 17.166580200195312, 16.938194274902344, 18.125335693359375, 16.681396484375, 16.677921295166016, 16.479167938232422, 16.5122013092041, 15.123557090759277, 16.706518173217773, 17.75754165649414, 16.400110244750977, 16.73661231994629, 15.798147201538086, 14.940102577209473, 16.682363510131836, 16.038467407226562, 14.43802261352539, 13.149455070495605]
