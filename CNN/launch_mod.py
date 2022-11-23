@@ -364,6 +364,7 @@ class result:
 
 if __name__ == '__main__':
     # put main folder
-    for i in range(1,5)
+    for i in range(1,5):
+        print("mode {}".format(i))
         result.train_mod(i,0,50000)
 
