@@ -203,7 +203,7 @@ class result:
         nb_coord = np.shape(x_train)[1]
 
         # On entre les meilleurs paramètres déterminés par tests
-        best_param = result.get_all_best_param(nb_mod,M,Re,plot = False)
+        best_param = result.get_all_best_param(nb_mod,0,50000,plot = False)
         nb_neurone = best_param[0]
         number_of_epochs = best_param[1]
         batch_size = best_param[2]
@@ -235,7 +235,7 @@ class result:
         nb_coord = np.shape(x_train)[1]
 
         # On entre les meilleurs paramètres déterminés par tests
-        best_param = result.get_all_best_param(nb_mod,M,Re,plot = False)
+        best_param = result.get_all_best_param(nb_mod,0,50000,plot = False)
         nb_neurone = best_param[0]
         number_of_epochs = best_param[1]
         batch_size = best_param[2]
@@ -270,7 +270,7 @@ class result:
         nb_coord = np.shape(x_train)[1]
 
         # On entre les meilleurs paramètres déterminés par tests
-        best_param = result.get_all_best_param(nb_mod,M,Re,plot = False)
+        best_param = result.get_all_best_param(nb_mod,0,50000,plot = False)
 
         nb_neurone = best_param[0]
         number_of_epochs = best_param[1]
@@ -315,7 +315,7 @@ class result:
         nb_coord = np.shape(x_train)[1]
 
         # On entre les meilleurs paramètres déterminés par tests
-        best_param = result.get_all_best_param(nb_mod,M,Re,plot = False)
+        best_param = result.get_all_best_param(nb_mod,0,50000,plot = False)
         nb_neurone = best_param[0]
         number_of_epochs = best_param[1]
         batch_size = best_param[2]
@@ -366,5 +366,5 @@ if __name__ == '__main__':
     # put main folder
     for i in range(1,5):
         print("mode {}".format(i))
-        result.train_mod(i,0,50000)
+        result.train_mod(i,0,1000000)
 
