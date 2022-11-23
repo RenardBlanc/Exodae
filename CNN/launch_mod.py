@@ -26,7 +26,7 @@ from approx_finesse_CNN import *
 # Analyse des résultats
 # ***********
 class result:
-    def get_all_best_param(nb_mod,M,Re):
+    def get_all_best_param(nb_mod,M,Re,plot = False):
         # Création du dossier qui va regrouper tous les fichiers
         # de figures
         dossierparent = os.path.join('CNN','results')
@@ -65,12 +65,13 @@ class result:
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel('Nombre de neurone')
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot: 
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel('Nombre de neurone')
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_epoque' in hyper_param:
             type_param = 'nb_epoque'
@@ -82,12 +83,13 @@ class result:
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel("Nombre d'époque")
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel("Nombre d'époque")
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_paquet' in hyper_param:
             type_param = 'nb_paquet'
@@ -99,12 +101,13 @@ class result:
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel('Nombre de paquet')
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel('Nombre de paquet')
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_pool' in hyper_param:
             type_param = 'nb_pool'
@@ -116,12 +119,13 @@ class result:
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel('Nombre de Pool size')
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel('Nombre de Pool size')
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_filtre' in hyper_param:
             type_param = 'nb_filtre'
@@ -137,12 +141,13 @@ class result:
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel("Index de la combinaison du nombre de filtre")
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel("Index de la combinaison du nombre de filtre")
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_noyau' in hyper_param:
             type_param = 'nb_noyau'
@@ -158,12 +163,13 @@ class result:
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel("Index de la combinaison du nombre de noyau")
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel("Index de la combinaison du nombre de noyau")
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
         
         if 'nb_drop' in hyper_param:
             type_param = 'nb_drop'
@@ -179,18 +185,20 @@ class result:
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
             nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
-            # Tracé des figures
-            plt.figure(figsize = (12,8))
-            plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
-            plt.xlabel("Index de la combinaison du coefficient de drop")
-            plt.ylabel('Précision (%)')
-            plt.savefig(nom_figure)
+            if plot:
+                # Tracé des figures
+                plt.figure(figsize = (12,8))
+                plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
+                plt.xlabel("Index de la combinaison du coefficient de drop")
+                plt.ylabel('Précision (%)')
+                plt.savefig(nom_figure)
 
+        return best_param
 
 if __name__ == '__main__':
     # put main folder
-    result.get_all_best_param(1,0,50000)
-    result.get_all_best_param(2,0,50000)
-    result.get_all_best_param(3,0,50000)
-    result.get_all_best_param(4,0,50000)
+    result.get_all_best_param(1,0,50000,plot=True)
+    result.get_all_best_param(2,0,50000,plot=True)
+    result.get_all_best_param(3,0,50000,plot=True)
+    result.get_all_best_param(4,0,50000,plot=True)
 
