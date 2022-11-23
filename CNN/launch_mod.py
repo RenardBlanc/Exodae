@@ -27,7 +27,12 @@ from approx_finesse_CNN import *
 # ***********
 class result:
     def get_all_best_param(nb_mod,M,Re):
+        # Création du dossier qui va regrouper tous les fichiers
+        # de figures
         
+        mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = r'CNN\results')
+        sub_mainFileName = pre_process_CNN.createMainFile_CNN('mod_{}'.format(nb_mod),bigfolder = mainFileName)
+
         if nb_mod == 1:
             hyper_param = ['nb_neuron','nb_epoque','nb_paquet']
         elif nb_mod == 2:
@@ -59,9 +64,7 @@ class result:
             index_max = accurancy_test.index(max(accurancy_test))
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
@@ -78,9 +81,7 @@ class result:
             index_max = accurancy_test.index(max(accurancy_test))
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
@@ -97,9 +98,7 @@ class result:
             index_max = accurancy_test.index(max(accurancy_test))
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
@@ -116,9 +115,7 @@ class result:
             index_max = accurancy_test.index(max(accurancy_test))
             best_param.append(int(data[index_max]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter(data,np.round(np.array(accurancy_test)*100,0))
@@ -139,9 +136,7 @@ class result:
             for i in range(nb_param):
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
@@ -162,9 +157,7 @@ class result:
             for i in range(nb_param):
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
@@ -185,9 +178,7 @@ class result:
             for i in range(nb_param):
                 best_param.append(int(filtr_comb[index_max][i]))
             # Nom des fichiers de figures
-            mainFileName = pre_process_CNN.createMainFile_CNN('results')
-            sub_mainFileName = os.path.join(mainFileName, 'figures')
-            nom_figure = os.path.join(sub_mainFileName, 'mod_{}_{}_M_{}_Re_{}'.format(nb_mod,type_param,M,Re))
+            nom_figure = os.path.join(sub_mainFileName, '{}_M_{}_Re_{}'.format(type_param,M,Re))
             # Tracé des figures
             plt.figure(figsize = (12,8))
             plt.scatter([i for i in range(len(accurancy_train))],np.round(np.array(accurancy_test)*100,0))
