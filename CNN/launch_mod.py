@@ -72,7 +72,7 @@ class result:
                 plt.xlabel('Nombre de neurone')
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_epoque' in hyper_param:
             type_param = 'nb_epoque'
             text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
@@ -90,7 +90,7 @@ class result:
                 plt.xlabel("Nombre d'époque")
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_paquet' in hyper_param:
             type_param = 'nb_paquet'
             text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
@@ -108,7 +108,7 @@ class result:
                 plt.xlabel('Nombre de paquet')
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_pool' in hyper_param:
             type_param = 'nb_pool'
             text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
@@ -126,7 +126,7 @@ class result:
                 plt.xlabel('Nombre de Pool size')
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_filtre' in hyper_param:
             type_param = 'nb_filtre'
             nb_param = nb_filtr
@@ -148,7 +148,7 @@ class result:
                 plt.xlabel("Index de la combinaison du nombre de filtre")
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_noyau' in hyper_param:
             type_param = 'nb_noyau'
             nb_param = nb_noyau
@@ -170,7 +170,7 @@ class result:
                 plt.xlabel("Index de la combinaison du nombre de noyau")
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-        
+                plt.close()
         if 'nb_drop' in hyper_param:
             type_param = 'nb_drop'
             nb_param = nb_drop
@@ -192,7 +192,7 @@ class result:
                 plt.xlabel("Index de la combinaison du coefficient de drop")
                 plt.ylabel('Précision (%)')
                 plt.savefig(nom_figure)
-
+                plt.close()
         return best_param
 
 if __name__ == '__main__':
