@@ -52,6 +52,8 @@ class result:
         
         if 'nb_neuron' in hyper_param:
             type_param = 'nb_neuron'
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
             #  On accéde au données des fichiers textes
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_neurone(nb_mod,M,Re)
             index_max = accurancy_test.index(max(accurancy_test))
@@ -69,6 +71,8 @@ class result:
         
         if 'nb_epoque' in hyper_param:
             type_param = 'nb_epoque'
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
             #  On accéde au données des fichiers textes
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_epoque(nb_mod,M,Re)
             index_max = accurancy_test.index(max(accurancy_test))
@@ -86,6 +90,8 @@ class result:
         
         if 'nb_paquet' in hyper_param:
             type_param = 'nb_paquet'
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
             #  On accéde au données des fichiers textes
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_paquet(nb_mod,M,Re)
             index_max = accurancy_test.index(max(accurancy_test))
@@ -103,6 +109,8 @@ class result:
         
         if 'nb_pool' in hyper_param:
             type_param = 'nb_pool'
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
             #  On accéde au données des fichiers textes
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_pool(nb_mod,M,Re)
             index_max = accurancy_test.index(max(accurancy_test))
@@ -121,6 +129,8 @@ class result:
         if 'nb_filtre' in hyper_param:
             type_param = 'nb_filtre'
             nb_param = nb_filtr
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
 
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_filtre(nb_mod,M,Re)
             # On crée la liste des combinaison
@@ -142,6 +152,8 @@ class result:
         if 'nb_noyau' in hyper_param:
             type_param = 'nb_noyau'
             nb_param = nb_noyau
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
 
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_noyaux(nb_mod,M,Re)
             # On crée la liste des combinaison
@@ -163,6 +175,8 @@ class result:
         if 'nb_drop' in hyper_param:
             type_param = 'nb_drop'
             nb_param = nb_drop
+            text = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'analyse des résultats pour {} \n-----------------------------------------------------\n ".format(type_param)
+            print(text)
 
             data,accurancy_train,loss_train, accurancy_val_train, loss_val_train,accurancy_test,loss_test = read_test.nb_drop(nb_mod,M,Re)
             # On crée la liste des combinaison
