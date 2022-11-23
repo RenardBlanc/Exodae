@@ -29,8 +29,8 @@ class result:
     def get_all_best_param(nb_mod,M,Re):
         # Création du dossier qui va regrouper tous les fichiers
         # de figures
-        
-        mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = r'CNN\results')
+        dossierparent = os.path.join('CNN','results')
+        mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
         sub_mainFileName = pre_process_CNN.createMainFile_CNN('mod_{}'.format(nb_mod),bigfolder = mainFileName)
 
         if nb_mod == 1:
