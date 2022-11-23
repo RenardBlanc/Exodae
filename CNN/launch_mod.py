@@ -190,3 +190,7 @@ class result:
 if __name__ == '__main__':
     # put main folder
     result.get_all_best_param(1,0,50000)
+    result.get_all_best_param(2,0,50000)
+    result.get_all_best_param(3,0,50000)
+    result.get_all_best_param(4,0,50000)
+
