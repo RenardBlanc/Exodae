@@ -385,7 +385,7 @@ class model():
             fct3 = LeakyReLU(alpha = 0.2)(convt2)
             output = Conv1D(filters=1, kernel_size=1, activation='relu')(fct3)
 
-            generateur = Model(input = [in_lat,in_lab],outputs = output)
+            generateur = Model(inputs = [in_lat,in_lab],outputs = output)
             return generateur
         else :
             error
@@ -405,7 +405,7 @@ class model():
         # make weights in the discriminator not trainable
         d_model.trainable = False
         # get noise and label inputs from generator model
-        gen_noise, gen_label = g_model.input
+        gen_noise, gen_label = g_model.inputs
         # get coord output from the generator model
         gen_output = g_model.output
         # connect image output and label input from generator as inputs to discriminator
