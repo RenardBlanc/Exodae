@@ -32,7 +32,8 @@ from itertools import combinations_with_replacement
 # Tensorflow
 import tensorflow as tf
 from tensorflow.keras import Model, Sequential
-from tensorflow.keras.layers import Dense, Flatten, Conv1D, MaxPooling1D, Dropout, Reshape, GlobalAveragePooling1D, LeakyReLU, Input,concatenate, Embedding,LeakyReLU,Conv1DTranspose, Adam
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.layers import Dense, Flatten, Conv1D, MaxPooling1D, Dropout, Reshape, GlobalAveragePooling1D, LeakyReLU, Input,concatenate, Embedding,LeakyReLU,Conv1DTranspose
 from tensorflow.keras.utils import to_categorical,plot_model
 from sklearn.metrics import classification_report
 
