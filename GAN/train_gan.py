@@ -457,14 +457,14 @@ if __name__ == "__main__":
         raise Exception(
             'Entrer <Nombre de Mach> <Nombre de Reynolds><Dimension latente> <BATCH_SIZE> <EPOCHS> ')
     else: 
-        M = int(sys.argv[2]) 
+        Mach = int(sys.argv[2]) 
         Re = int(sys.argv[3]) 
         latent_dim = int(sys.argv[3]) 
         batch_size = int(sys.argv[4])
         epoch = int(sys.argv[5]) 
     
     # Import des données de profils 
-    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
+    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(Mach,Re) # Nombre de coordonnées et de profils
     nb_coord = np.shape(x_train)[1]
     # create the discriminator
     d_model = model.discriminateur(nb_coord, nb_class)
