@@ -385,7 +385,7 @@ class model():
             fct3 = LeakyReLU(alpha = 0.2)(convt2)
             output = Conv1D(filters=1, kernel_size=1, activation='relu')(fct3)
 
-            generateur = Model([in_lat,in_lab],output)
+            generateur = Model(input = [in_lat,in_lab],outputs = output)
             return generateur
         else :
             error
