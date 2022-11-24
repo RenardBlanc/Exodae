@@ -77,9 +77,9 @@ class pre_process_GAN:
             no_data = [] 
             for i in range(len(nom_profil)):
                 name = nom_profil[i]
-                alpha,cL,cD,cDp,cM = utils.polarFile2list(name,M,Re)
                 # Ici on choisit alpha = 0
                 try :
+                    alpha,cL,cD,cDp,cM = utils.polarFile2list(name,M,Re)
                     cL = np.array(cL)
                     cD = np.array(cD)
                     finesse = cL/cD
