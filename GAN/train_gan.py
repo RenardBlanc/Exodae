@@ -471,5 +471,5 @@ if __name__ == "__main__":
     # create the generator
     g_model = model.generateur(nb_coord,latent_dim,nb_class)
     # create the gan
-    gan_model = model.gan(g_model, d_model)
+    gan_model = model.gan(d_model, g_model)
     model.train_model(x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = epoch, nb_batch = batch_size)
