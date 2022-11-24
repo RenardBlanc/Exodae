@@ -453,9 +453,9 @@ if __name__ == "__main__":
     # ----------
     # Paramètres 
     # ----------
-    if len(sys.argv) != 7:
+    if len(sys.argv) != 6:
         raise Exception(
-            'Entrer <Nombre de Mach> <Nombre de Reynolds> <BATCH_SIZE> <EPOCHS> <Plot>')
+            'Entrer <Nombre de Mach> <Nombre de Reynolds><Dimension latente> <BATCH_SIZE> <EPOCHS> ')
     else: 
         M = int(sys.argv[2]) 
         Re = int(sys.argv[3]) 
