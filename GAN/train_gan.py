@@ -457,8 +457,8 @@ if __name__ == "__main__":
         raise Exception(
             'Entrer <Nombre de Mach> <Nombre de Reynolds><Dimension latente> <BATCH_SIZE> <EPOCHS> ')
     else: 
-        Mach = int(sys.argv[2]) 
-        Re = int(sys.argv[3]) 
+        Mach = int(sys.argv[1]) 
+        Re = int(sys.argv[2]) 
         latent_dim = int(sys.argv[3]) 
         batch_size = int(sys.argv[4])
         epoch = int(sys.argv[5]) 
