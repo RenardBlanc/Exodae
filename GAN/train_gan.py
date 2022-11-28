@@ -379,9 +379,9 @@ class model():
 
         # merge
         conc1 = concatenate([resh1, resh2])
-        convt1 = Conv1DTranspose(filters=128, kernel_size=51)(conc1)
+        convt1 = Conv1DTranspose(filters=128, kernel_size=quart+1)(conc1)
         fct2 = LeakyReLU(alpha = 0.2)(convt1)
-        convt2 = Conv1DTranspose(filters=128, kernel_size=101)(fct2)
+        convt2 = Conv1DTranspose(filters=128, kernel_size=2*quart+1)(fct2)
         fct3 = LeakyReLU(alpha = 0.2)(convt2)
         output = Conv1D(filters=1, kernel_size=1,activation='tanh', padding='same')(fct3)
 
