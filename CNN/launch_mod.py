@@ -223,7 +223,7 @@ class result:
         print("la précision du modèle avec les données de test est {}".format(history_test[1]))
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
-        nom_fichier = os.path.join(dossierparent,'mod_{}'.format(nb_mod))
+        nom_fichier = os.path.join(dossierparent,'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         model.save(nom_fichier)
         return model
 
@@ -258,7 +258,7 @@ class result:
         history_test = model.evaluate(x_test,y_test_hot)
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
-        nom_fichier = os.path.join(dossierparent,'mod_{}'.format(nb_mod))
+        nom_fichier = os.path.join(dossierparent,'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         model.save(nom_fichier)
         return model
     
@@ -303,7 +303,7 @@ class result:
         print("la précision du modèle avec les données de test est {}".format(history_test[1]))
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
-        nom_fichier = os.path.join(dossierparent,'mod_{}'.format(nb_mod))
+        nom_fichier = os.path.join(dossierparent,'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         model.save(nom_fichier)
         return model
     
@@ -346,7 +346,7 @@ class result:
         print("la précision du modèle avec les données de test est {}".format(history_test[1]))
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
-        nom_fichier = os.path.join(dossierparent,'mod_{}'.format(nb_mod))
+        nom_fichier = os.path.join(dossierparent,'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         model.save(nom_fichier)
         return model
     

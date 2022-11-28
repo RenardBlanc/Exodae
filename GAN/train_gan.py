@@ -407,7 +407,7 @@ class model():
         # get noise and label inputs from generator model
         gen_noise, gen_label = g_model.inputs
         # get coord output from the generator model
-        gen_output = g_model.output
+        gen_output = g_model.outputs
         # connect image output and label input from generator as inputs to discriminator
         gan_output = d_model([gen_output, gen_label])
         # define gan model as taking noise and label and outputting a classification
