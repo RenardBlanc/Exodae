@@ -320,7 +320,7 @@ class pre_process_GAN:
         # choose random instances
         ix = np.random.randint(0, nb_profil, n_samples)
         # select images and labels
-        X, labels = x_train[ix], y_train[ix]
+        X, labels = x_train[:,ix], y_train[ix]
         # generate class labels
         y = np.ones((n_samples, 1))
         return [X, labels], y
@@ -420,8 +420,8 @@ class model():
     def train_model(x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
         
         # Import des données de profils 
-        nb_profil =  np.shape(x_train)[0]
-        nb_coord = np.shape(x_train)[1]
+        nb_coord =  np.shape(x_train)[0]
+        nb_profil = np.shape(x_train)[1]
 
         nb_batch_per_epoch = int(nb_profil/nb_batch)
         half_batch = int(nb_batch / 2)
