@@ -464,8 +464,7 @@ if __name__ == "__main__":
     
     # Import des données de profils 
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(Mach,Re) # Nombre de coordonnées et de profils
-    nb_coord = np.shape(x_train)[1]
-    print(nb_coord)
+    nb_coord = np.shape(x_train)[0]
     # create the discriminator
     d_model = model.discriminateur(nb_coord, nb_class)
     # create the generator
