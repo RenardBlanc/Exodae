@@ -317,7 +317,7 @@ class pre_process_GAN:
 
     def generate_real_samples(x_train,y_train,n_samples):
         # choose random instances
-        ix = np.randint(0, x_train.shape[0], n_samples)
+        ix = random.randint(0, x_train.shape[0], n_samples)
         # select images and labels
         X, labels = x_train[ix], y_train[ix]
         # generate class labels
@@ -331,7 +331,7 @@ class pre_process_GAN:
         # reshape into a batch of inputs for the network
         z_input = x_input.reshape(n_samples, latent_dim)
         # generate labels
-        labels = np.randint(0, n_classes, n_samples)
+        labels = random.randint(0, n_classes, n_samples)
         return [z_input, labels]
         
 
