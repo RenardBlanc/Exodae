@@ -328,7 +328,7 @@ class pre_process_GAN:
     # generate points in latent space as input for the generator
     def generate_latent_points(latent_dim, n_samples, n_classes=10):
         # generate points in the latent space
-        x_input = np.randn(latent_dim * n_samples)
+        x_input = np.random.randn(latent_dim * n_samples)
         # reshape into a batch of inputs for the network
         z_input = x_input.reshape(n_samples, latent_dim)
         # generate labels
