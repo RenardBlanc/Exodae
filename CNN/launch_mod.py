@@ -207,7 +207,8 @@ class result:
         nb_neurone = best_param[0]
         number_of_epochs = best_param[1]
         batch_size = best_param[2]
-
+        text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'entrainement pour le modèle {} \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {}\n ".format(nb_mod,nb_class,nb_neurone,number_of_epochs,batch_size)
+        print(text_start)
         # Définition du modèle
         model = models.mod_1(nb_coord,nb_class,nb_neurones = nb_neurone,fct_activation=LeakyReLU)
         model.compile(loss='categorical_crossentropy',
@@ -217,10 +218,12 @@ class result:
                             batch_size=batch_size,
                             epochs=number_of_epochs,
                             validation_split=0.2,
-                            verbose=1)
-    
+                            verbose=0)
+        print("\nEntrainement terminé\n")
+        results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+        print(results)
         history_test = model.evaluate(x_test,y_test_hot)
-        print("la précision du modèle avec les données de test est {}".format(history_test[1]))
+        print("La précision du modèle avec les données de test est {}\n".format(history_test[1]))
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
         nom_fichier = os.path.join(dossierparent,'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
@@ -245,6 +248,8 @@ class result:
         nb_filter_2 = best_param[5] 
         kernel_size_2 = best_param[7]
 
+        text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'entrainement pour le modèle {} \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n ".format(nb_mod,nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,nb_filter_2,kernel_size_2)
+        print(text_start)
         model= models.mod_2(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2,fct_activation = 'relu',nb_neurone = nb_neurone)
         model.compile(loss='categorical_crossentropy',
                                     optimizer='adam', metrics=['accuracy'])
@@ -253,8 +258,10 @@ class result:
                             batch_size=batch_size,
                             epochs=number_of_epochs,
                             validation_split=0.2,
-                            verbose=1)
-
+                            verbose=0)
+        print("\nEntrainement terminé\n")
+        results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+        print(results)
         history_test = model.evaluate(x_test,y_test_hot)
         # Enregistre le modèle
         dossierparent = os.path.join('CNN','model')
@@ -288,7 +295,8 @@ class result:
         drop3 = best_param[11]
         drop4 = best_param[12]
 
-
+        text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'entrainement pour le modèle {} \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* drop3 : {} \n* drop4 : {} \n ".format(nb_mod,nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,drop3,drop4)
+        print(text_start)
         model= models.mod_3(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 =kernel_size_1, pool_size_1 = pool_size_1,drop1  =drop1, nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2,drop2 = drop2, nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, drop3 = drop3,drop4 = drop4,fct_activation = 'relu',nb_neurone = nb_neurone)
         model.compile(loss='categorical_crossentropy',
                                     optimizer='adam', metrics=['accuracy'])
@@ -297,8 +305,10 @@ class result:
                             batch_size=batch_size,
                             epochs=number_of_epochs,
                             validation_split=0.2,
-                            verbose=1)
-
+                            verbose=0)
+        print("\nEntrainement terminé\n")
+        results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+        print(results)
         history_test = model.evaluate(x_test,y_test_hot)
         print("la précision du modèle avec les données de test est {}".format(history_test[1]))
         # Enregistre le modèle
@@ -332,6 +342,8 @@ class result:
         drop3 = best_param[11]
         pool_size_3 = 3
 
+        text_start = "[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début de l'entrainement pour le modèle {} \n-----------------------------------------------------\n \nLes paramètres de cette experience sont: \n* {} classes \n* {} neurones \n* {} epoque(s) \n* batch_size : {} \n* nb_filter_1 : {} \n* kernel_size_1 : {} \n* pool_size_1 : {} \n* drop1 : {} \n* nb_filter_2 : {} \n* kernel_size_2 : {} \n* pool_size_2 : {} \n* drop2 : {} \n* nb_filter_3 : {} \n* kernel_size_3 : {} \n* pool_size_3 : {} \n* drop3 : {} \n ".format(nb_mod,nb_class,nb_neurone,number_of_epochs,batch_size,nb_filter_1,kernel_size_1,pool_size_1,drop1,nb_filter_2,kernel_size_2,pool_size_2,drop2,nb_filter_3,kernel_size_3,pool_size_3,drop3)
+        print(text_start)
         model= models.mod_4(nb_coord,nb_class,nb_filter_1 = nb_filter_1, kernel_size_1 = kernel_size_1, pool_size_1 = pool_size_1, nb_drop1 =drop1,nb_filter_2 = nb_filter_2, kernel_size_2 = kernel_size_2, pool_size_2 = pool_size_2, nb_drop2 =drop2,nb_filter_3 = nb_filter_3, kernel_size_3 = kernel_size_3, pool_size_3 = pool_size_3, nb_drop3 =drop3,fct_activation = 'relu',nb_neurone = nb_neurone)
         model.compile(loss='categorical_crossentropy',
                                     optimizer='adam', metrics=['accuracy'])
@@ -341,7 +353,9 @@ class result:
                             epochs=number_of_epochs,
                             validation_split=0.2,
                             verbose=0)
-
+        print("\nEntrainement terminé\n")
+        results = "Les resultats sont les suivants:\n* Accurancy = {}\n* Loss = {}\n* validation_accurancy = {}\n* validation_loss = {}\n".format(history.history['accuracy'][-1],history.history['loss'][-1],history.history['val_accuracy'][-1],history.history['val_loss'][-1])
+        print(results)
         history_test = model.evaluate([x_test,x_test,x_test],y_test_hot)
         print("la précision du modèle avec les données de test est {}".format(history_test[1]))
         # Enregistre le modèle
@@ -363,8 +377,19 @@ class result:
             error
 
 if __name__ == '__main__':
-    # put main folder
-    for i in range(1,5):
-        print("mode {}".format(i))
-        result.train_mod(i,0,50000)
+    
+    if len(sys.argv) == 3:
+        Mach = int(sys.argv[1]) 
+        Re = int(sys.argv[2]) 
+        for i in range(1,5):
+            result.train_mod(i,Mach,Re)
+    elif len(sys.argv) == 4:
+        Mach = int(sys.argv[1]) 
+        Re = int(sys.argv[2]) 
+        nb_mod = int(sys.argv[3])
+        result.train_mod(nb_mod,Mach,Re)
 
+    else:
+        raise Exception(
+            'Entrer <Nb_Mach> <Nb_Re> <Nb_Model>')
+        
