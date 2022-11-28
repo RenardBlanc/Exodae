@@ -233,7 +233,7 @@ class pre_process_GAN:
         def list_label(nom_profil_Re,finesse_max_Re,nb_class):
             df_fin, intervalle_finesse_max = discretisation_label(nom_profil_Re,finesse_max_Re,nb_class)
             df_fin = finesse_classe(df_fin,intervalle_finesse_max)
-            classe_list = list(df_fin['classe'])
+            classe_list = list(np.array(list(df_fin['classe'])) - 1)
 
             return classe_list
 
