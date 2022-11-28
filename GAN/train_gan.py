@@ -434,7 +434,7 @@ class model():
                 # update discriminator model weights
                 d_loss1, _ = d_model.train_on_batch([X_real, labels_real], y_real)
                 # generate 'fake' examples
-                [X_fake, labels], y_fake =  pre_process_GAN.generate_fake_samples(g_model, latent_dim, half_batch)
+                [X_fake, labels], y_fake =  model.generate_fake_samples(g_model, latent_dim, half_batch)
                 # update discriminator model weights
                 d_loss2, _ = d_model.train_on_batch([X_fake, labels], y_fake)
                 # prepare points in latent space as input for the generator
