@@ -40,7 +40,7 @@ if __name__ == "__main__":
         if nb_epoch_test ==0:
             test_model(Mach,Re)
         else: 
-            test_model(Mach,Re,number_of_epochs_test=nb_epoch_test,toTest = ['drop'])
+            test_model(Mach,Re,number_of_epochs_test=nb_epoch_test)
     
     else:
         raise Exception(
