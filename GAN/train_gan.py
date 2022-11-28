@@ -320,7 +320,7 @@ class pre_process_GAN:
         # choose random instances
         ix = np.random.randint(0, nb_profil, n_samples)
         # select images and labels
-        X, labels = x_train[:,ix], y_train[ix]
+        X, labels = x_train[ix,:], y_train[ix]
         # generate class labels
         y = np.ones((n_samples, 1))
         return [X, labels], y
