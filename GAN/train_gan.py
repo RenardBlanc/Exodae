@@ -61,7 +61,7 @@ class pre_process_GAN:
             return mainFileName
 
     def save_data_pre_process_GAN():
-        x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 32, nb_LE = 20, nb_TE = 10)
+        x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 31, nb_LE = 20, nb_TE = 10)
         # On cherche les données de polaire pour un nombre de Mach nul et 
         # des nombres de Reynolds allant de 50000 à 1000000
         M = 0
