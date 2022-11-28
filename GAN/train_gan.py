@@ -364,18 +364,18 @@ class model():
         return discriminateur
 
     def generateur(nb_coord,latent_dim,nb_class):
-
+        quart = int(nb_coord/4)
         generateur = Sequential()
         #Head 1
         in_lat = Input(shape = (latent_dim,))
         dense1 = Dense(32*nb_coord, activation='relu')(in_lat)
         fct1 = LeakyReLU(alpha = 0.2)(dense1)
-        resh1 = Reshape((int(nb_coord/4),128))(fct1)
+        resh1 = Reshape((quart,128))(fct1)
         #Head 2
         in_lab = Input(shape = (1,))
-        emb2 = Embedding(nb_class,50)(in_lab)
-        dense2 = Dense(50, activation='relu')(emb2)
-        resh2 = Reshape((int(nb_coord/4),1))(dense2)
+        emb2 = Embedding(nb_class,quart)(in_lab)
+        dense2 = Dense(quart, activation='relu')(emb2)
+        resh2 = Reshape((quart,1))(dense2)
 
         # merge
         conc1 = concatenate([resh1, resh2])
