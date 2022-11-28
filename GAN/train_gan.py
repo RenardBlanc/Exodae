@@ -316,9 +316,10 @@ class pre_process_GAN:
         return x_train,y_train,nb_class,x_coord_ini
 
     def generate_real_samples(x_train,y_train,n_samples):
-        print(0, x_train.shape[1], n_samples)
+        nb_profil = x_train.shape[1]
+        print(len([0, x_train.shape[1], n_samples]))
         # choose random instances
-        ix = random.randint(0, x_train.shape[1], n_samples)
+        ix = random.randint(0, nb_profil, n_samples)
         # select images and labels
         X, labels = x_train[ix], y_train[ix]
         # generate class labels
