@@ -1,6 +1,3 @@
-sudo su
-git clone https://github.com/RenardBlanc/Exodae.git
-cd Exodae
 apt-get update
 Yes
 apt-get install python3.8-venv
