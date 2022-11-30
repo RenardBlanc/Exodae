@@ -417,7 +417,7 @@ class model():
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
         
-    def train_model(x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
+    def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
         
         # Import des données de profils 
         nb_coord =  np.shape(x_train)[0]
@@ -447,7 +447,10 @@ class model():
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
         # save the generator model
-        g_model.save(r'GAN/cgan_generator.h5')
+        name = 'GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim)
+        if os.path.exists(name):
+            os.remove(name)
+        g_model.save(name)
 
 if __name__ == "__main__":
     # ----------
@@ -474,4 +477,4 @@ if __name__ == "__main__":
     g_model = model.generateur(nb_coord,latent_dim,nb_class)
     # create the gan
     gan_model = model.gan(d_model, g_model)
-    model.train_model(x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = epoch, nb_batch = batch_size)
+    model.train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = epoch, nb_batch = batch_size)
