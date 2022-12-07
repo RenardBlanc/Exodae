@@ -316,11 +316,11 @@ class pre_process_GAN:
         return x_train,y_train,nb_class,x_coord_ini
 
     def generate_real_samples(x_train,y_train,n_samples):
-        nb_profil = x_train.shape[0]
+        nb_profil = x_train.shape[1]
         # choose random instances
         ix = np.random.randint(0, nb_profil, n_samples)
         # select images and labels
-        X, labels = x_train[ix,:], y_train[ix]
+        X, labels = x_train[:,ix], y_train[ix]
         # generate class labels
         y = np.ones((n_samples, 1))
         return [X, labels], y
@@ -421,8 +421,8 @@ class model():
     def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
         
         # Import des données de profils 
-        nb_coord =  np.shape(x_train)[1]
-        nb_profil = np.shape(x_train)[0]
+        nb_coord =  np.shape(x_train)[0]
+        nb_profil = np.shape(x_train)[1]
 
         nb_batch_per_epoch = int(nb_profil/nb_batch)
         half_batch = int(nb_batch / 2)
@@ -469,10 +469,7 @@ if __name__ == "__main__":
     
     # Import des données de profils 
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(Mach,Re) # Nombre de coordonnées et de profils
-    # Transpose pour simplifier
-    x_train = x_train.T
-    print(np.shape(x_train))
-    nb_coord = np.shape(x_train)[1]
+    nb_coord = np.shape(x_train)[0]
     # create the discriminator
     d_model = model.discriminateur(nb_coord, nb_class)
     # create the generator
