@@ -339,21 +339,22 @@ class pre_process_GAN:
 class model():
 
     def discriminateur(nb_coord, nb_class):
+        quart = int(nb_coord/4)
         discriminateur = Sequential()
         #Head 1
         in_coord = Input(shape = (nb_coord,))
         resh1 = Reshape((nb_coord,1))(in_coord)
         #Head 2
         in_label = Input(shape = (1,))
-        emb2 = Embedding(nb_class,50)(in_label)
+        emb2 = Embedding(1,nb_class)(in_label)
         dense2 = Dense(nb_coord, activation='relu')(emb2)
         resh2 = Reshape((nb_coord,1))(dense2)
         # merge
         conc1 = concatenate([resh1, resh2])
-        conv1 = Conv1D(filters=128, kernel_size=2)(conc1)
+        conv1 = Conv1D(filters=128, kernel_size=quart+1, activation='relu')(conc1)
         fct1 = LeakyReLU(alpha = 0.2)(conv1)
-        conv2 = Conv1D(filters=128, kernel_size=2, activation='relu')(fct1)
-        fct2 = LeakyReLU(alpha = 0.2)(conv1)
+        conv2 = Conv1D(filters=128, kernel_size=quart*2+1, activation='relu')(fct1)
+        fct2 = LeakyReLU(alpha = 0.2)(conv2)
         flat3 = Flatten()(fct2)
         drop3 = Dropout(0.5)(flat3)
         output = Dense(1, activation='relu')(drop3)
@@ -374,11 +375,11 @@ class model():
         resh1 = Reshape((quart,128))(fct1)
         #Head 2
         in_lab = Input(shape = (1,))
-        emb2 = Embedding(nb_class,quart)(in_lab)
+        emb2 = Embedding(1,nb_class)(in_lab)
         dense2 = Dense(quart, activation='relu')(emb2)
         resh2 = Reshape((quart,1))(dense2)
 
-        # merge
+        # merges
         conc1 = concatenate([resh1, resh2])
         convt1 = Conv1DTranspose(filters=128, kernel_size=quart+1)(conc1)
         fct2 = LeakyReLU(alpha = 0.2)(convt1)
