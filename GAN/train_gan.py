@@ -421,8 +421,8 @@ class model():
     def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
         
         # Import des données de profils 
-        nb_coord =  np.shape(x_train)[0]
-        nb_profil = np.shape(x_train)[1]
+        nb_coord =  np.shape(x_train)[1]
+        nb_profil = np.shape(x_train)[0]
 
         nb_batch_per_epoch = int(nb_profil/nb_batch)
         half_batch = int(nb_batch / 2)
