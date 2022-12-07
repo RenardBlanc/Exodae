@@ -471,6 +471,7 @@ if __name__ == "__main__":
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(Mach,Re) # Nombre de coordonnées et de profils
     # Transpose pour simplifier
     x_train = x_train.T
+    print(x_train.shape())
     nb_coord = np.shape(x_train)[1]
     # create the discriminator
     d_model = model.discriminateur(nb_coord, nb_class)
