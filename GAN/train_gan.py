@@ -379,7 +379,7 @@ class model():
         dense2 = Dense(quart, activation='relu')(emb2)
         resh2 = Reshape((quart,1))(dense2)
 
-        # merges
+        # merge
         conc1 = concatenate([resh1, resh2])
         convt1 = Conv1DTranspose(filters=128, kernel_size=quart+1)(conc1)
         fct2 = LeakyReLU(alpha = 0.2)(convt1)
