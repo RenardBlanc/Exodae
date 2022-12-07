@@ -323,6 +323,7 @@ class pre_process_GAN:
         X, labels = x_train[ix,:], y_train[ix]
         # generate class labels
         y = np.ones((n_samples, 1))
+        print(np.shape(X),np.shape(labels))
         return [X, labels], y
     
     # generate points in latent space as input for the generator
@@ -347,7 +348,7 @@ class model():
         resh1 = Reshape((nb_coord,1))(in_coord)
         #Head 2
         in_label = Input(shape = (1,))
-        emb2 = Embedding(nb_class,1)(in_label)
+        emb2 = Embedding(1,nb_class)(in_label)
         dense2 = Dense(nb_coord, activation='relu')(emb2)
         resh2 = Reshape((nb_coord,1))(dense2)
         # merge
