@@ -434,7 +434,6 @@ class model():
             for j in range(nb_batch_per_epoch):
                 # get randomly selected 'real' samples
                 [X_real, labels_real], y_real = pre_process_GAN.generate_real_samples(x_train,y_train,half_batch)
-                print(np.shape(X_real))
                 # update discriminator model weights
                 d_loss1, _ = d_model.train_on_batch([X_real, labels_real], y_real)
                 # generate 'fake' examples
