@@ -324,7 +324,7 @@ class pre_process_GAN:
         # generate class labels
         y = np.ones((n_samples, 1))
         print(np.shape(X),np.shape(labels))
-        return [X, labels], y
+        return [X, labels.T], y
     
     # generate points in latent space as input for the generator
     def generate_latent_points(latent_dim, n_samples, n_classes=10):
