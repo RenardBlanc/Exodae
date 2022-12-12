@@ -22,10 +22,7 @@ from approx_finesse_CNN import *
 
 def predict_class(model, example):
   # Utiliser le modèle pour faire une prédiction pour l'exemple donné
-  prediction = model.predict(example)
-
-  # Récupérer la classe avec la plus grande probabilité
-  predicted_class = tf.argmax(prediction, axis=1)
+ 
 
   return predicted_class
 
@@ -35,13 +32,13 @@ def mod_1(M,Re):
     x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_classes = pre_process_CNN.data_CNN(M,Re)
     # Charger le modèle enregistré dans le fichier h5
     model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
-    print(np.shape(x_test))
     # Fonction pour prédire la classe d'un exemple
-
+    prediction = model.predict(x_test)
+    # Récupérer la classe avec la plus grande probabilité
+    predicted_class = tf.argmax(prediction, axis=1)
     # Prédire la classe de chaque exemple dans les données de test
-    for example in x_test:
-        predicted_class = predict_class(model, example)
-        print('Example:', example)
-        print('Predicted class:', predicted_class)
+    for i in np.shape(x_test)[0]:
+        print('Profil', i)
+        print('Predicted class:', predicted_class[i])
 
 mod_1(0,50000)
