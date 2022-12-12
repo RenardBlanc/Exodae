@@ -39,6 +39,6 @@ def mod_1(M,Re):
     # Prédire la classe de chaque exemple dans les données de test
     for i in range(np.shape(x_test)[0]):
         print('Profil', i)
-        print('Predicted class:', predicted_class[i].value)
+        print('Predicted class:', predicted_class[i].numpy())
 
 mod_1(0,50000)
