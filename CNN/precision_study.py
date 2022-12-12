@@ -26,7 +26,7 @@ def mod_1(M,Re):
     # Charger le modèle enregistré dans le fichier h5
     model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
     # Utiliser le modèle pour faire une prédiction
-    predictions = model.predict(x_test[0])
+    predictions = model.predict(x_test)
 
     print(predictions)
 
