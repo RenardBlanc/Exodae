@@ -30,6 +30,21 @@ def predicted_class(nb_mod,M,Re):
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
     print(min(y_test),max(y_test),min(predicted_class),max(predicted_class))
-    print(np.abs(y_test-predicted_class))
+    ecart = np.abs(y_test-predicted_class)
+    
+    dossierparent = os.path.join('CNN','results')
+    mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
+    nom_figure = os.path.join(mainFileName, 'predict_mod{}_M{}_Re{}'.format(nb_mod,M,Re))
+    plt.figure(figsize = (12,8))
+    plt.hist(ecart)
+    plt.savefig(nom_figure)
+    plt.close()
+
+    for i in range(len(ecart)):
+        if ecart[i]>3:
+            necorrespondpas +=1
+    
+    print(int(necorrespondpas/len(ecart)*100))
+
 
 predicted_class(1,0,50000)
