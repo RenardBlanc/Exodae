@@ -35,7 +35,7 @@ def mod_1(M,Re):
     x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_classes = pre_process_CNN.data_CNN(M,Re)
     # Charger le modèle enregistré dans le fichier h5
     model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
-
+    print(np.shape(x_test))
     # Fonction pour prédire la classe d'un exemple
 
     # Prédire la classe de chaque exemple dans les données de test
