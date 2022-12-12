@@ -39,7 +39,7 @@ def predicted_class(nb_mod,M,Re):
     plt.hist(ecart)
     plt.savefig(nom_figure)
     plt.close()
-
+    necorrespondpas = 0
     for i in range(len(ecart)):
         if ecart[i]>3:
             necorrespondpas +=1
