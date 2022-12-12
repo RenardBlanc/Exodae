@@ -41,7 +41,7 @@ def predicted_class(nb_mod,M,Re):
     plt.close()
     necorrespondpas = 0
     for i in range(len(ecart)):
-        if ecart[i]>3:
+        if ecart[i]>7:
             necorrespondpas +=1
     
     print(int(necorrespondpas/len(ecart)*100))
