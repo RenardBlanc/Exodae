@@ -15,7 +15,7 @@ import os
 
 # on se connecte au dropbox:
 # Ajoutez votre clé d'accès à Dropbox ici
-ACCESS_TOKEN = "sl.BU1JLqeBhY1sePqTZFrYwbMHvPscZPFc6huBznjAhDsuSR1JI7fCcHHVM4D90mBSangx7PZyhFAygrHZ_CTQV5Ph0_UMmhWKmyiUOSNRKOnvZVGraI-4ZFrQDChmjdaL6tdaRyaUZKWD"
+ACCESS_TOKEN = "sl.BU3HDGLE6kcRxN9ILNm_Pp8BCUh02f2WNLVTr9sap72Hx-Oa05AuqWBzWEoZto97n6V5ivIrrJ_DU0E0ITg58SH6sh8P2keuvIpNe8T6Dh7sq7jN_hOQ48IcQd5muhV3X8az221rOMet"
 
 # Créez une instance de la classe DropboxClient en utilisant votre clé d'accès
 dbx = Dropbox(ACCESS_TOKEN,  scope=['files.content.write'])
