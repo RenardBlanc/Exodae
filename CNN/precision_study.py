@@ -29,3 +29,5 @@ def mod_1(M,Re):
     predictions = model.predict(x_test[0])
 
     print(predictions)
+
+mod_1(0,50000)
