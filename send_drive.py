@@ -33,4 +33,5 @@ for root, dirs, files in os.walk(directory):
         # Ouvrez le fichier que vous souhaitez envoyer sur Dropbox
         with open(directory+file, "rb") as f:
             # Envoyez le fichier sur Dropbox en utilisant la méthode files_upload
+            print(f.read())
             dbx.files_upload(f.read(), "/"+file, mode=dropbox.files.WriteMode.overwrite)
