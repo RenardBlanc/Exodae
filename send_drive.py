@@ -29,6 +29,7 @@ directory = 'CNN/model'
 for root, dirs, files in os.walk(directory):
     # Affichez les fichiers dans le répertoire courant
     for file in files:
+        print("fichier {}\n".format(file))
         # Ouvrez le fichier que vous souhaitez envoyer sur Dropbox
         with open(file, "rb") as f:
             # Envoyez le fichier sur Dropbox en utilisant la méthode files_upload
