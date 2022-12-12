@@ -242,7 +242,7 @@ class pre_process_CNN:
         for i in range(5):
             finesse_max_classe.append(list_label(nom_profil_tt_Re[i],finesse_max[i],nb_class_list[i]))
         
-        def split_data(dataset,finesse_max):
+        def split_data(dataset,finesse_max,finesse_max_re,nom_profil):
 
             dataset = np.matrix.tolist(dataset.T)
             # Number of data 
@@ -265,20 +265,27 @@ class pre_process_CNN:
 
             # List of random train index
             list_test = random.sample(index_notrain, n_test)
-
+            nom_train = []
             x_train = []
             x_test = []
-
+            
+            nom_test = []
             y_test = []
             y_train = []
+            y_train_reelle = []
+            y_test_reelle= []
             for i in allindex:
                 if i in list_train:
+                    nom_train.append(nom_profil[i])
                     x_train.append(dataset[i])
                     y_train.append(finesse_max[i])
+                    y_train_reelle.append(finesse_max_re[i])
                 elif i in list_test:
+                    nom_test.append(nom_profil[i])
                     x_test.append(dataset[i])
                     y_test.append(finesse_max[i])
-            return x_train,y_train,x_test,y_test
+                    y_test_reelle.append(finesse_max_re[i])
+            return x_train,y_train,x_test,y_test,nom_train,nom_test,y_train_reelle,y_test_reelle
 
         def save_Re_data_CNN(dict):
             mainFileName = pre_process_CNN.createMainFile_CNN('post_processed_data_CNN')
@@ -287,56 +294,71 @@ class pre_process_CNN:
             with open(name, "wb") as tf:
                 pickle.dump(dict,tf)
 
-        x_train,y_train,x_test,y_test = split_data(ally_0_50000,finesse_max_classe[0])
+        x_train,y_train,x_test,y_test,nom_train,nom_test,y_train_reelle,y_test_reelle = split_data(ally_0_50000,finesse_max_classe[0],finesse_max[0],nom_profil_tt_Re[0])
         dict_0_50000 = {'x_train' : x_train,
                         'y_train' : y_train,
+                        'nom_train' : nom_train,
                         'x_test' : x_test,
                         'y_test':y_test,
-                        'nom_profil' : nom_profil_0_50000,
+                        'nom_test' : nom_test,
+                        'y_train_reelle' : y_train_reelle ,
+                        'y_test_reelle' : y_test_reelle,
                         'nb_classe' : nb_class_list[0],
                         'reynoldsNumber' : 50000,
                         }
         save_Re_data_CNN(dict_0_50000)
 
-        x_train,y_train,x_test,y_test = split_data(ally_0_100000,finesse_max_classe[1])
+        x_train,y_train,x_test,y_test,nom_train,nom_test,y_train_reelle,y_test_reelle = split_data(ally_0_100000,finesse_max_classe[1],finesse_max[0],nom_profil_tt_Re[1])
         dict_0_100000 = {'x_train' : x_train,
                         'y_train' : y_train,
+                        'nom_train' : nom_train,
                         'x_test' : x_test,
                         'y_test':y_test,
-                        'nom_profil' : nom_profil_0_100000,
+                        'y_train_reelle' : y_train_reelle ,
+                        'y_test_reelle' : y_test_reelle,
+                        'nom_test' : nom_test,
                         'nb_classe' : nb_class_list[2],
                         'reynoldsNumber' : 100000,
                         }
         save_Re_data_CNN(dict_0_100000)
 
-        x_train,y_train,x_test,y_test = split_data(ally_0_200000,finesse_max_classe[2])
+        x_train,y_train,x_test,y_test,nom_train,nom_test,y_train_reelle,y_test_reelle = split_data(ally_0_200000,finesse_max_classe[2],finesse_max[0],nom_profil_tt_Re[2])
         dict_0_200000 = {'x_train' : x_train,
                         'y_train' : y_train,
+                        'nom_train' : nom_train,
                         'x_test' : x_test,
                         'y_test':y_test,
-                        'nom_profil' : nom_profil_0_200000,
+                        'nom_test' : nom_test,
+                        'y_train_reelle' : y_train_reelle ,
+                        'y_test_reelle' : y_test_reelle,
                         'nb_classe' : nb_class_list[2],
                         'reynoldsNumber' : 200000,
                         }
         save_Re_data_CNN(dict_0_200000)
 
-        x_train,y_train,x_test,y_test = split_data(ally_0_500000,finesse_max_classe[3])
+        x_train,y_train,x_test,y_test,nom_train,nom_test,y_train_reelle,y_test_reelle = split_data(ally_0_500000,finesse_max_classe[3],finesse_max[0],nom_profil_tt_Re[3])
         dict_0_500000 = {'x_train' : x_train,
                         'y_train' : y_train,
+                        'nom_train' : nom_train,
                         'x_test' : x_test,
                         'y_test':y_test,
-                        'nom_profil' : nom_profil_0_500000,
+                        'nom_test' : nom_test,
+                        'y_train_reelle' : y_train_reelle ,
+                        'y_test_reelle' : y_test_reelle,
                         'nb_classe' : nb_class_list[3],
                         'reynoldsNumber' : 500000,
                         }
         save_Re_data_CNN(dict_0_500000)
         
-        x_train,y_train,x_test,y_test = split_data(ally_0_1000000,finesse_max_classe[4])
+        x_train,y_train,x_test,y_test ,nom_train,nom_test,y_train_reelle,y_test_reelle= split_data(ally_0_1000000,finesse_max_classe[4],finesse_max[0],nom_profil_tt_Re[4])
         dict_0_1000000 = {'x_train' : x_train,
                         'y_train' : y_train,
+                        'nom_train' : nom_train,
                         'x_test' : x_test,
                         'y_test':y_test,
-                        'nom_profil' : nom_profil_0_1000000,
+                        'nom_test' : nom_test,
+                        'y_train_reelle' : y_train_reelle ,
+                        'y_test_reelle' : y_test_reelle,
                         'nb_classe' : nb_class_list[4],
                         'reynoldsNumber' : 1000000,
                         }
