@@ -28,7 +28,7 @@ def predicted_class(nb_mod,M,Re):
     # Fonction pour prédire la classe d'un exemple
     prediction = model.predict(x_test)
     # Récupérer la classe avec la plus grande probabilité
-    predicted_class = tf.argmax(prediction, axis=1)
+    predicted_class = tf.argmax(prediction, axis=1).numpy()
     print(min(y_train),max(y_train),min(predicted_class),max(predicted_class))
     print(np.abs(y_train-predicted_class))
 
