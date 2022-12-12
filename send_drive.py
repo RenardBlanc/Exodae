@@ -23,7 +23,7 @@ dbx = Dropbox(ACCESS_TOKEN,  scope=['files.content.write'])
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = 'CNN/model'
+directory = 'CNN/model/'
 
 # Utilisez la fonction os.walk pour obtenir la liste des fichiers et des répertoires dans le répertoire
 for root, dirs, files in os.walk(directory):
@@ -31,6 +31,6 @@ for root, dirs, files in os.walk(directory):
     for file in files:
         print("fichier {}\n".format(file))
         # Ouvrez le fichier que vous souhaitez envoyer sur Dropbox
-        with open(file, "rb") as f:
+        with open(directory+file, "rb") as f:
             # Envoyez le fichier sur Dropbox en utilisant la méthode files_upload
             dbx.files_upload(f.read(), "/"+file, mode=dropbox.files.WriteMode.overwrite)
