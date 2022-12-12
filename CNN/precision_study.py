@@ -37,7 +37,7 @@ def mod_1(M,Re):
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1)
     # Prédire la classe de chaque exemple dans les données de test
-    for i in np.shape(x_test)[0]:
+    for i in range(np.shape(x_test)[0]):
         print('Profil', i)
         print('Predicted class:', predicted_class[i])
 
