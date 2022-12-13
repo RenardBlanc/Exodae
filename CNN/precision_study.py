@@ -67,8 +67,7 @@ def get_ecart(Re,nb_class):
             no_data.append(name)
 
     finesse_max = np.array(finesse_max).round(1).T
-    len(finesse_max)
-    len(no_data)
+    print(len(finesse_max),len(no_data))
     # M = 0, Re = 50000
     ally_0_50000 = ally.copy()
     nom_profil_0_50000 = nom_profil.copy()
