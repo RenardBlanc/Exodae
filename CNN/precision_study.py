@@ -67,8 +67,6 @@ def get_ecart(M,Re,nb_class):
             no_data.append(name)
 
     finesse_max = np.array(finesse_max).round(1).T
-    print(len(finesse_max),len(no_data))
-    # M = 0, Re = 50000
     ally_0_50000 = ally.copy()
     nom_profil_0_50000 = nom_profil.copy()
     finesse_max_0_50000 = list(finesse_max)
@@ -76,7 +74,6 @@ def get_ecart(M,Re,nb_class):
     for nom in no_data:
         index = nom_profil.index(nom)
         z[index] = True
-        print(index)
         finesse_max_0_50000.pop(index)
         nom_profil_0_50000.pop(index)
     ally_0_50000 = ally_0_50000.compress(np.logical_not(z), axis = 1)
@@ -93,5 +90,5 @@ def get_ecart(M,Re,nb_class):
                         include_lowest=True)
 
     print(intervalle_finesse_max)
-
+    print(df_fin)
 get_ecart(0,50000,87)
