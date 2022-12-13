@@ -66,7 +66,7 @@ def get_ecart(Re,nb_class):
         except:
             no_data.append(name)
 
-    finesse_max = finesse_max.round(1).T
+    finesse_max = np.array(finesse_max).round(1).T
 
     # M = 0, Re = 50000
     ally_0_50000 = ally.copy()
