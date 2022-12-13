@@ -113,4 +113,5 @@ Re = 50000
 nb_class = 87
 ecart_class = 3
 
+print(get_ecart(M,Re,nb_class))
 print(max_ecart_pos(M,Re,nb_class,ecart_class))
