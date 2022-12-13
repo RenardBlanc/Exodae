@@ -49,7 +49,7 @@ def predicted_class(nb_mod,M,Re,ecart_class):
 
 def get_ecart(Re,nb_class):
     x,ally,nom_profil,marchepas = format.coordinate()
-    finesse_max = np.zeros((len(nom_profil),1))
+    finesse_max = [0 for i in range(len(nom_profil))]
 
     # Certaines données de polaire ne sont pas disponible pour tous
     # les profils
@@ -62,7 +62,7 @@ def get_ecart(Re,nb_class):
             cL = np.array(cL)
             cD = np.array(cD)
             finesse = cL/cD
-            finesse_max[i,0] = np.max(finesse)
+            finesse_max[i] = np.max(finesse)
         except:
             no_data.append(name)
 
