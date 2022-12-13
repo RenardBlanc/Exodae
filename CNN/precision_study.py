@@ -76,12 +76,10 @@ def get_ecart(Re,nb_class):
     for nom in no_data:
         index = nom_profil.index(nom)
         z[index] = True
+        print(index)
         finesse_max_0_50000.pop(index)
         nom_profil_0_50000.pop(index)
     ally_0_50000 = ally_0_50000.compress(np.logical_not(z), axis = 1)
-
-
-    #predicted_class(1,0,50000)
 
     Re_fin = {'nom' : nom_profil_0_50000, 
             'finesse_max' : finesse_max_0_50000}
