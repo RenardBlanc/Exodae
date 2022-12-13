@@ -108,10 +108,18 @@ def max_ecart_pos(M,Re,nb_class,ecart_class):
     return ecart_max(intervalle_finesse_max, ecart_class)
 
 
-M = 0
-Re = 50000
-nb_class = 87
-ecart_class = 3
-
-print(get_ecart(M,Re,nb_class))
-print(max_ecart_pos(M,Re,nb_class,ecart_class))
+if __name__ == '__main__':
+    
+    if len(sys.argv) == 3:
+        M = 0
+        Re = 50000
+        nb_class = 87
+        ecart_class = int(sys.argv[1]) 
+        nb_mod = int(sys.argv[2]) 
+        print(get_ecart(M,Re,nb_class))
+        print(predicted_class(nb_mod,M,Re,ecart_class,plot = False))
+        print(max_ecart_pos(M,Re,nb_class,ecart_class))
+    else:
+        raise Exception(
+            'Entrer <Nb_Mach> <Nb_Re> <Nb_Model>')
+        
