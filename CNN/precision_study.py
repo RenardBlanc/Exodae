@@ -21,32 +21,6 @@ sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
 from approx_finesse_CNN import *
 
 
-def predicted_class(nb_mod,M,Re,ecart_class):
-    x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_classes = pre_process_CNN.data_CNN(M,Re)
-    # Charger le modèle enregistré dans le fichier h5
-    model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
-    # Fonction pour prédire la classe d'un exemple
-    prediction = model.predict(x_test)
-    # Récupérer la classe avec la plus grande probabilité
-    predicted_class = tf.argmax(prediction, axis=1).numpy()
-    print(min(y_test),max(y_test),min(predicted_class),max(predicted_class))
-    ecart = np.abs(y_test-predicted_class)
-    
-    dossierparent = os.path.join('CNN','results')
-    mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
-    nom_figure = os.path.join(mainFileName, 'predict_mod{}_M{}_Re{}'.format(nb_mod,M,Re))
-    plt.figure(figsize = (12,8))
-    plt.hist(ecart)
-    plt.savefig(nom_figure)
-    plt.close()
-    necorrespondpas = 0
-    for i in range(len(ecart)):
-        if ecart[i]>ecart_class:
-            necorrespondpas +=1
-    
-    print(int(1-(necorrespondpas/len(ecart))*100))
-
-
 def get_ecart(M,Re,nb_class):
     x,ally,nom_profil,marchepas = format.coordinate()
     finesse_max = [0 for i in range(len(nom_profil))]
@@ -89,6 +63,54 @@ def get_ecart(M,Re,nb_class):
                         labels=[i for i in range(1,nb_class+1)],
                         include_lowest=True)
 
-    print(intervalle_finesse_max)
-    print(df_fin)
-get_ecart(0,50000,87)
+    return intervalle_finesse_max
+
+
+def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
+    x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_classes = pre_process_CNN.data_CNN(M,Re)
+    # Charger le modèle enregistré dans le fichier h5
+    model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
+    # Fonction pour prédire la classe d'un exemple
+    prediction = model.predict(x_test)
+    # Récupérer la classe avec la plus grande probabilité
+    predicted_class = tf.argmax(prediction, axis=1).numpy()
+    print(min(y_test),max(y_test),min(predicted_class),max(predicted_class))
+    ecart = np.abs(y_test-predicted_class)
+
+    if plot:
+        dossierparent = os.path.join('CNN','results')
+        mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
+        nom_figure = os.path.join(mainFileName, 'predict_mod{}_M{}_Re{}'.format(nb_mod,M,Re))
+        plt.figure(figsize = (12,8))
+        plt.hist(ecart)
+        plt.savefig(nom_figure)
+        plt.close()
+
+    necorrespondpas = 0
+    for i in range(len(ecart)):
+        if ecart[i]>ecart_class:
+            necorrespondpas +=1
+    acc_model = int(1-(necorrespondpas/len(ecart))*100)
+    return acc_model
+
+def max_ecart_pos(M,Re,nb_class,ecart_class):
+
+    intervalle_finesse_max = get_ecart(M,Re,nb_class)
+
+    def ecart_max(liste, distance):
+        ecart_max = 0
+        for i in range(len(liste) - distance):
+            ecart = liste[i + distance] - liste[i]
+            if ecart > ecart_max:
+                ecart_max = ecart
+        return ecart_max
+    
+    return ecart_max(intervalle_finesse_max, ecart_class)
+
+
+M = 0
+Re = 50000
+nb_class = 87
+ecart_class = 3
+
+max_ecart_pos(M,Re,nb_class,ecart_class)
