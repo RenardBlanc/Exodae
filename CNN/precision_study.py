@@ -47,7 +47,7 @@ def predicted_class(nb_mod,M,Re,ecart_class):
     print(int(1-(necorrespondpas/len(ecart))*100))
 
 
-def get_ecart(Re,nb_class):
+def get_ecart(M,Re,nb_class):
     x,ally,nom_profil,marchepas = format.coordinate()
     finesse_max = [0 for i in range(len(nom_profil))]
 
@@ -94,4 +94,4 @@ def get_ecart(Re,nb_class):
 
     print(intervalle_finesse_max)
 
-get_ecart(50000,87)
+get_ecart(0,50000,87)
