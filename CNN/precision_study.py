@@ -74,7 +74,6 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     prediction = model.predict(x_test)
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
-    print(min(y_test),max(y_test),min(predicted_class),max(predicted_class))
     ecart = np.abs(y_test-predicted_class)
 
     if plot:
@@ -97,16 +96,15 @@ def max_ecart_pos(M,Re,nb_class,ecart_class):
 
     intervalle_finesse_max = get_ecart(M,Re,nb_class)
 
-    def ecart_max(liste, distance):
+    def ecart_moy(liste, distance):
         ecart_max = 0
         for i in range(len(liste) - distance):
-            ecart = liste[i + distance] - liste[i]
-            print(ecart)
-            if ecart > ecart_max:
-                ecart_max = ecart
-        return ecart_max
+            ecart_list = liste[i + distance] - liste[i]
+            ecart_moy +=ecart_list
+        ecart_moy = ecart_moy/(len(liste) - distance)
+        return ecart_moy
     
-    return ecart_max(intervalle_finesse_max, ecart_class)
+    return ecart_moy(intervalle_finesse_max, ecart_class)
 
 
 if __name__ == '__main__':
