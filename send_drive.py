@@ -23,7 +23,7 @@ dbx = Dropbox(ACCESS_TOKEN,  scope=['files.content.write'])
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = 'CNN/results/figure'
+directory = 'CNN/results/figure/'
 
 # Utilisez la fonction os.walk pour obtenir la liste des fichiers et des répertoires dans le répertoire
 for root, dirs, files in os.walk(directory):
