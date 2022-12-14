@@ -68,7 +68,10 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     # Charger le modèle enregistré dans le fichier h5
     model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
     # Fonction pour prédire la classe d'un exemple
-    prediction = model.predict(x_test,verbose = 1)
+    if nb_mod==4:
+        prediction = model.predict([x_test,x_test,x_test])
+    else : 
+        prediction = model.predict(x_test)
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
     ecart = np.abs(y_test-predicted_class)
@@ -146,7 +149,7 @@ if __name__ == '__main__':
         M = 0
         Re = 50000
         nb_class = 87
-        for i in range(1,4):
+        for i in range(1,5):
             plot_ecart_test(M,Re,i,nb_class)
     else:
         raise Exception(
