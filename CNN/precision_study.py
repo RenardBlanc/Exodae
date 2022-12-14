@@ -101,6 +101,24 @@ def max_ecart_pos(M,Re,nb_class,ecart_class):
     
     return np.round(ecart_moy(intervalle_finesse_max, ecart_class),1)
 
+def plot_ecart_test(M,Re,nb_mod,nb_class):
+    accurancy = []
+    ecart_fin = []
+    for ecart_class in range(10):
+        accurancy.append(predicted_class(nb_mod,M,Re,ecart_class,plot = False)) 
+        ecart_fin.append(max_ecart_pos(M,Re,nb_class,ecart_class))
+    dossierparent = os.path.join('CNN','results')
+    mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
+    nom_figure = os.path.join(mainFileName, 'acurrancy{}_M{}_Re{}'.format(nb_mod,M,Re))
+    plt.figure(figsize = (12,8))
+    plt.plot([i for i in range(10)],accurancy)
+    plt.savefig(nom_figure)
+    plt.close()
+    nom_figure = os.path.join(mainFileName, 'ecart{}_M{}_Re{}'.format(nb_mod,M,Re))
+    plt.figure(figsize = (12,8))
+    plt.plot([i for i in range(10)],ecart_fin)
+    plt.savefig(nom_figure)
+    plt.close()
 
 if __name__ == '__main__':
     
@@ -113,6 +131,12 @@ if __name__ == '__main__':
         #print(get_ecart(M,Re,nb_class))
         print("La précision du modèle en prenant en compte un ecart de {} est de {} %".format(ecart_class,predicted_class(nb_mod,M,Re,ecart_class,plot = False)))
         print("Cette écart correspond à un écart de {} en finesse max".format(max_ecart_pos(M,Re,nb_class,ecart_class)))
+    elif len(sys.argv) == 2:
+        M = 0
+        Re = 50000
+        nb_class = 87
+        nb_mod = int(sys.argv[2]) 
+        plot_ecart_test(M,Re,nb_mod,nb_class)
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_Model>')
