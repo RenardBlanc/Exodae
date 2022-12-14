@@ -135,7 +135,7 @@ if __name__ == '__main__':
         M = 0
         Re = 50000
         nb_class = 87
-        nb_mod = int(sys.argv[2]) 
+        nb_mod = int(sys.argv[1]) 
         plot_ecart_test(M,Re,nb_mod,nb_class)
     else:
         raise Exception(
