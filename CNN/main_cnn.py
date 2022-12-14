@@ -73,10 +73,10 @@ if __name__ == '__main__':
         Re = 50000
         nb_class = 87
         file_name = str(sys.argv[1]) 
-        fin_max_pred,incertitude = predict_cnn.predict_class(file_name,nb_mod,M,Re,nb_class,dir=r"data/Airfoil_Coordinate")
-        fin_d = round(fin_max_pred+incertitude,1)
-        fin_g = round(fin_max_pred-incertitude,1)
         for i in range(1,5):
+            fin_max_pred,incertitude = predict_cnn.predict_class(file_name,nb_mod,M,Re,nb_class,dir=r"data/Airfoil_Coordinate")
+            fin_d = round(fin_max_pred+incertitude,1)
+            fin_g = round(fin_max_pred-incertitude,1)
             print("On retrouve avec le modèle {}, une finesse entre [{},{}]\n".format(nb_mod,fin_g,fin_d))
     else:
         raise Exception(
