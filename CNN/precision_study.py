@@ -82,11 +82,12 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
         plt.hist(ecart)
         plt.savefig(nom_figure)
         plt.close()
-
     necorrespondpas = 0
     for i in range(len(ecart)):
         if ecart[i] > ecart_class:
             necorrespondpas +=1
+        
+    print(ecart)
     acc_model = int((1-(necorrespondpas/len(ecart)))*100)
     return acc_model
 
