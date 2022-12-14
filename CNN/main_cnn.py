@@ -62,7 +62,7 @@ if __name__ == '__main__':
         M = 0
         Re = 50000
         nb_class = 87
-        file_name = int(sys.argv[1]) 
+        file_name = str(sys.argv[1]) 
         nb_mod = int(sys.argv[2]) 
         fin_max_pred,incertitude = predict_cnn.predict_class(file_name,nb_mod,M,Re,nb_class,dir=r"data/Airfoil_Coordinate")
         fin_d = round(fin_max_pred+incertitude,1)
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         M = 0
         Re = 50000
         nb_class = 87
-        file_name = int(sys.argv[1]) 
+        file_name = str(sys.argv[1]) 
         fin_max_pred,incertitude = predict_cnn.predict_class(file_name,nb_mod,M,Re,nb_class,dir=r"data/Airfoil_Coordinate")
         fin_d = round(fin_max_pred+incertitude,1)
         fin_g = round(fin_max_pred-incertitude,1)
