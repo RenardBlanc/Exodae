@@ -89,6 +89,7 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     for i in range(len(ecart)):
         if ecart[i]>ecart_class:
             necorrespondpas +=1
+    print(necorrespondpas)
     acc_model = int(1 - (necorrespondpas/len(ecart))*100)
     return acc_model
 
@@ -97,7 +98,7 @@ def max_ecart_pos(M,Re,nb_class,ecart_class):
     intervalle_finesse_max = get_ecart(M,Re,nb_class)
 
     def ecart_moy(liste, distance):
-        ecart_max = 0
+        ecart_moy = 0
         for i in range(len(liste) - distance):
             ecart_list = liste[i + distance] - liste[i]
             ecart_moy +=ecart_list
@@ -115,7 +116,7 @@ if __name__ == '__main__':
         nb_class = 87
         ecart_class = int(sys.argv[1]) 
         nb_mod = int(sys.argv[2]) 
-        print(get_ecart(M,Re,nb_class))
+        #print(get_ecart(M,Re,nb_class))
         print(predicted_class(nb_mod,M,Re,ecart_class,plot = False))
         print(max_ecart_pos(M,Re,nb_class,ecart_class))
     else:
