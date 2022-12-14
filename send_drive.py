@@ -24,7 +24,7 @@ if __name__ == '__main__':
     
     if len(sys.argv) == 2:
         # Demande le token d'accés 
-        ACCESS_TOKEN = int(sys.argv[1]) 
+        ACCESS_TOKEN = str(sys.argv[1]) 
         # on se connecte au dropbox:
         # Créez une instance de la classe DropboxClient en utilisant votre clé d'accès
         dbx = Dropbox(ACCESS_TOKEN,  scope=['files.content.write'])
