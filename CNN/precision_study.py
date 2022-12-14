@@ -75,7 +75,7 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
     ecart = np.abs(y_test-predicted_class)
-
+    print(ecart)
     if plot:
         dossierparent = os.path.join('CNN','results')
         mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
