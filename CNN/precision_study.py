@@ -75,7 +75,6 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
     ecart = np.abs(y_test-predicted_class)
-    print(ecart)
     if plot:
         dossierparent = os.path.join('CNN','results')
         mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
@@ -89,7 +88,6 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     for i in range(len(ecart)):
         if ecart[i] > ecart_class:
             necorrespondpas +=1
-    print(necorrespondpas)
     acc_model = int((1-(necorrespondpas/len(ecart)))*100)
     return acc_model
 
@@ -105,7 +103,7 @@ def max_ecart_pos(M,Re,nb_class,ecart_class):
         ecart_moy = ecart_moy/(len(liste) - distance)
         return ecart_moy
     
-    return ecart_moy(intervalle_finesse_max, ecart_class)
+    return np.round(ecart_moy(intervalle_finesse_max, ecart_class),1)
 
 
 if __name__ == '__main__':
@@ -117,8 +115,8 @@ if __name__ == '__main__':
         ecart_class = int(sys.argv[1]) 
         nb_mod = int(sys.argv[2]) 
         #print(get_ecart(M,Re,nb_class))
-        print(predicted_class(nb_mod,M,Re,ecart_class,plot = False))
-        print(max_ecart_pos(M,Re,nb_class,ecart_class))
+        print("La précision du modèle en prenant en compte un ecart de {} est de {} %".format(ecart_class,predicted_class(nb_mod,M,Re,ecart_class,plot = False)))
+        print("Cette écart correspond à un écart de {} en finesse max".format(max_ecart_pos(M,Re,nb_class,ecart_class)))
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_Model>')
