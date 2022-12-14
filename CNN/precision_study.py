@@ -77,6 +77,8 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
         mainFileName = pre_process_CNN.createMainFile_CNN('figure',bigfolder = dossierparent)
         nom_figure = os.path.join(mainFileName, 'predict_mod{}_M{}_Re{}'.format(nb_mod,M,Re))
         plt.figure(figsize = (12,8))
+        plt.xlabel('Ecart de classe')
+        plt.ylabel('Profils')
         plt.hist(ecart)
         plt.savefig(nom_figure)
         plt.close()
@@ -112,16 +114,19 @@ def plot_ecart_test(M,Re,nb_mod,nb_class):
     nom_figure = os.path.join(mainFileName, 'acurrancy{}_M{}_Re{}'.format(nb_mod,M,Re))
     plt.figure(figsize = (12,8))
     plt.plot([i for i in range(10)],accurancy)
+    plt.xlabel('Ecart de classe')
+    plt.ylabel('Précision du modèle')
     plt.savefig(nom_figure)
     plt.close()
     nom_figure = os.path.join(mainFileName, 'ecart{}_M{}_Re{}'.format(nb_mod,M,Re))
     plt.figure(figsize = (12,8))
     plt.plot([i for i in range(10)],ecart_fin)
+    plt.xlabel('Ecart de classe')
+    plt.ylabel('Ecart de finesse')
     plt.savefig(nom_figure)
     plt.close()
 
 if __name__ == '__main__':
-    
     if len(sys.argv) == 3:
         M = 0
         Re = 50000
@@ -135,9 +140,14 @@ if __name__ == '__main__':
         M = 0
         Re = 50000
         nb_class = 87
-        nb_mod = str(sys.argv[1]) 
+        nb_mod = int(sys.argv[1]) 
         plot_ecart_test(M,Re,nb_mod,nb_class)
+    elif len(sys.argv) == 1:
+        M = 0
+        Re = 50000
+        nb_class = 87
+        for i in range(1,4):
+            plot_ecart_test(M,Re,i,nb_class)
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_Model>')
-        
