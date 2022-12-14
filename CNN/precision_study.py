@@ -61,16 +61,14 @@ def get_ecart(M,Re,nb_class):
                         bins=intervalle_finesse_max,
                         labels=[i for i in range(1,nb_class+1)],
                         include_lowest=True)
-
     return intervalle_finesse_max
-
 
 def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     x_train,y_train,y_train_hot,x_test,y_test,y_test_hot,nb_classes = pre_process_CNN.data_CNN(M,Re)
     # Charger le modèle enregistré dans le fichier h5
     model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
     # Fonction pour prédire la classe d'un exemple
-    prediction = model.predict(x_test)
+    prediction = model.predict(x_test,verbose = 1)
     # Récupérer la classe avec la plus grande probabilité
     predicted_class = tf.argmax(prediction, axis=1).numpy()
     ecart = np.abs(y_test-predicted_class)
@@ -86,8 +84,6 @@ def predicted_class(nb_mod,M,Re,ecart_class,plot = False):
     for i in range(len(ecart)):
         if ecart[i] > ecart_class:
             necorrespondpas +=1
-        
-    print(ecart)
     acc_model = int((1-(necorrespondpas/len(ecart)))*100)
     return acc_model
 
