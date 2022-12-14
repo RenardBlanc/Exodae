@@ -19,7 +19,7 @@ import os
 import sys
 sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ) )
 from approx_finesse_CNN import *
-
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 def get_ecart(M,Re,nb_class):
     x,ally,nom_profil,marchepas = format.coordinate()
