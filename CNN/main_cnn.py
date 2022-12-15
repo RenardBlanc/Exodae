@@ -44,10 +44,10 @@ class predict_cnn():
         x_inter,y_inter = predict_cnn.interpole_profil(file_name,dir=r"data/Airfoil_Coordinate")
         model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         p  = len(y_inter)
-        x_test = np.zeros((p,1))
+        x_test = np.zeros((1,p))
         print(np.shape(x_test),np.shape(y_inter))
         for i in range(len(y_inter)):
-            x_test[i,0] = y_inter[i]
+            x_test[0,i] = y_inter[i]
         # Fonction pour prédire la classe d'un exemple
         if nb_mod==4:
             prediction = model.predict([x_test,x_test,x_test])
