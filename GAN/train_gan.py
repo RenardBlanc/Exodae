@@ -323,7 +323,6 @@ class pre_process_GAN:
         X, labels = x_train[ix,:], y_train[ix]
         # generate class labels
         y = np.ones((n_samples, 1))
-        print(np.shape(X),np.shape(labels))
         return [X, labels.T], y
     
     # generate points in latent space as input for the generator
@@ -420,7 +419,7 @@ class model():
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
         
-    def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 100, nb_batch = 50):
+    def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 10, nb_batch = 200):
         
         # Import des données de profils 
         nb_coord =  np.shape(x_train)[1]
