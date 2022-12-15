@@ -33,6 +33,7 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
 def rolling_mean(data, window_size):
   data_mean = np.empty(data.size)
   for i in range(data.size):
+    print(i)
     # Calculate the mean of the surrounding data points
     data_mean[i] = np.mean(data[i:i+window_size])
   return data_mean
@@ -50,8 +51,9 @@ def generate_profil(classe,M,Re):
     
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
     plot_profil(coord_y_generated,M,Re,'gen')
-
+    print("ok1")
     coord_y_liss = rolling_mean(coord_y_generated, 3)
+    print("ok2")
     plot_profil(coord_y_liss,M,Re,'liss')
 
 
