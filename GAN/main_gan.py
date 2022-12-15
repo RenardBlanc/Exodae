@@ -33,15 +33,14 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
 def rolling_mean(data, window_size):
   data_mean = np.empty(data.size)
   for i in range(data.size):
-    print(i)
     # Calculate the mean of the surrounding data points
     data_mean[i] = np.mean(data[i:i+window_size])
   return data_mean
 
-def plot_profil(coord_y,M,Re,etat):
+def plot_profil(coord_y,M,Re,classe,etat):
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
     mainFileName = pre_process_GAN.createMainFile_GAN('figure')
-    nom_figure = os.path.join(mainFileName, etat + 'M{}_Re{}'.format(M,Re))
+    nom_figure = os.path.join(mainFileName, etat + '_{}_{}_{}'.format(M,Re,classe))
     plt.figure(figsize = (12,8))
     plt.plot(x_coord_ini,coord_y)
     plt.title("Generated airfoil with GAN")
@@ -50,21 +49,18 @@ def plot_profil(coord_y,M,Re,etat):
 def generate_profil(classe,M,Re,lissage = 3):
     
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
-    print("ok1")
-    plot_profil(coord_y_generated,M,Re,'gen')
-    print("ok1")
+    plot_profil(coord_y_generated,M,Re,classe,'gen')
     coord_y_liss = rolling_mean(coord_y_generated, lissage)
-    print("ok2")
-    plot_profil(coord_y_liss,M,Re,'liss')
+    plot_profil(coord_y_liss,M,Re,classe,'liss')
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 5:
+    if len(sys.argv) == 4:
         M = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
         classe = int(sys.argv[3])
-        lissage =   int(sys.argv[4])
-        generate_profil(classe,M,Re,lissage= lissage)
+        for lissage in range(3,20):
+            generate_profil(classe,M,Re,lissage= lissage)
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_class>')
