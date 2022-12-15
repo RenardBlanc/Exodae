@@ -37,7 +37,7 @@ def plot_profil(coord_y,M,Re):
     plt.figure(figsize = (12,8))
     plt.plot(x_coord_ini,coord_y)
     plt.title("Generated airfoil with GAN")
-    plt.save(nom_figure)
+    plt.savefig(nom_figure)
 
 classe = 12
 M = 0
