@@ -30,7 +30,17 @@ def generate_profil(Mach,Re,classe,latent_dim = 100):
     X  = model.predict([latent_points, labels])
     return X
 
+def plot_profil(coord_y,M,Re):
+    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
+    mainFileName = pre_process_GAN.createMainFile_GAN('figure')
+    nom_figure = os.path.join(mainFileName, 'generated_M{}_Re{}'.format(M,Re))
+    plt.figure(figsize = (12,8))
+    plt.plot(x_coord_ini,coord_y)
+    plt.title("Generated airfoil with GAN")
+    plt.save(nom_figure)
+
 classe = 12
-Mach = 0
+M = 0
 Re = 50000
-print(generate_profil(Mach,Re,classe,latent_dim = 100))
+coord_y = generate_profil(M,Re,classe,latent_dim = 100)
+plot_profil(coord_y,M,Re)
