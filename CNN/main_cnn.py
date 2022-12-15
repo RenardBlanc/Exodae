@@ -45,6 +45,7 @@ class predict_cnn():
         model = tf.keras.models.load_model('CNN/model/' + 'mod_{}_{}_{}.h5'.format(nb_mod,M,Re))
         p  = len(y_inter)
         x_test = np.zeros((p,1))
+        print(np.shape(x_test),np.shape(y_inter))
         for i in range(len(y_inter)):
             x_test[i,1] = y_inter[i]
         # Fonction pour prédire la classe d'un exemple
