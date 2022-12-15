@@ -31,4 +31,6 @@ def generate_profil(Mach,Re,classe,latent_dim = 100):
     return X
 
 classe = 12
+Mach = 0
+Re = 50000
 print(generate_profil(Mach,Re,classe,latent_dim = 100))
