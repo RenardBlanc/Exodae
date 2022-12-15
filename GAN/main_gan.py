@@ -51,7 +51,8 @@ def generate_profil(classe,M,Re,lissage = 3):
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
     plot_profil(coord_y_generated,M,Re,classe,'gen')
     coord_y_liss = rolling_mean(coord_y_generated, lissage)
-    plot_profil(coord_y_liss,M,Re,classe,'liss')
+    plot_profil(coord_y_liss,M,Re,classe,'liss_{}'.format(lissage))
+
 
 
 if __name__ == '__main__':

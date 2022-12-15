@@ -60,6 +60,28 @@ class pre_process_GAN:
                     os.mkdir(mainFileName) # Mac ou linux
             return mainFileName
 
+    def importRe(Re,dir = r"data/post_processed_data/"):
+            # Cette fonction permet d'importer les données associée à 
+            # un nombre de Reynolds
+            if Re == 50000:
+                with open(dir + r"Re_50000.pickle", "rb") as file:
+                    dict_Re = pickle.load(file)
+            elif Re == 100000 : 
+                with open(dir + r"Re_100000.pickle", "rb") as file:
+                    dict_Re = pickle.load(file)
+            elif Re == 200000 : 
+                with open(dir + r"Re_200000.pickle", "rb") as file:
+                    dict_Re = pickle.load(file)
+            elif Re == 500000 : 
+                with open(dir + r"Re_500000.pickle", "rb") as file:
+                    dict_Re = pickle.load(file)
+            elif Re == 1000000 : 
+                with open(dir + r"Re_1000000.pickle", "rb") as file:
+                    dict_Re = pickle.load(file)
+            else:
+                error
+            return dict_Re
+
     def save_data_pre_process_GAN():
         x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 31, nb_LE = 20, nb_TE = 10)
         # On cherche les données de polaire pour un nombre de Mach nul et 
@@ -291,7 +313,30 @@ class pre_process_GAN:
                         'coordonnee_x' : x_coord_initial
                         }
         save_Re_data_GAN(dict_0_1000000)
+    
+    def save_data_pre_process_GAN_aire():
         
+        def save_Re_data_GAN(dict):
+            mainFileName = pre_process_GAN.createMainFile_GAN('post_processed_data_GAN')
+            Re = dict['reynoldsNumber']
+            name = os.path.join(mainFileName,"mod_aire_Re_{}_{}.pickle".format(M,Re))
+            with open(name, "wb") as tf:
+                pickle.dump(dict,tf)
+
+        # On cherche les données de polaire pour un nombre de Mach nul et 
+        # des nombres de Reynolds allant de 50000 à 1000000
+        M = 0
+        Re_list=[50000,100000,200000,500000,1000000]
+
+        for Re in Re_list:
+            # On importe les données associées au nombre de Reynolds
+            dict_Re = pre_process_GAN.importRe(Re)
+            nom_profil_Re = dict_Re['nom']
+            aire = dict_Re['aire']
+            
+            
+
+
     def get_data_pre_process_GAN(M,Re):
 
         if not os.path.exists(r'GAN/post_processed_data_GAN/Re_{}_{}'.format(M,Re)):
