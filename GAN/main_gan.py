@@ -47,9 +47,9 @@ def plot_profil(coord_y,M,Re,etat):
     plt.title("Generated airfoil with GAN")
     plt.savefig(nom_figure)
 
-def generate_profil(classe,M,Re):
+def generate_profil(classe,M,Re,lissage = 3):
     
-    coord_y_generated = generateur_prediction(M,Re,classe,lissage = 3,latent_dim = 100)
+    coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
     print("ok1")
     plot_profil(coord_y_generated,M,Re,'gen')
     print("ok1")
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         Re = int(sys.argv[2]) 
         classe = int(sys.argv[3])
         lissage =   int(sys.argv[4])
-        generate_profil(classe,M,Re)
+        generate_profil(classe,M,Re,lissage= lissage)
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_class>')
