@@ -58,8 +58,6 @@ def generate_profil(classe,M,Re,lissage = 3):
     plot_profil(coord_y_liss,M,Re,'liss')
 
 
-
-
 if __name__ == '__main__':
     if len(sys.argv) == 5:
         M = int(sys.argv[1]) 

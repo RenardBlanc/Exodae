@@ -449,7 +449,7 @@ class model():
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
         # save the generator model
-        name = 'GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim)
+        name = 'GAN/cgan_generator_{}_{}_{}_{}.h5'.format(Mach,Re,nb_epoch,latent_dim)
         if os.path.exists(name):
             os.remove(name)
         g_model.save(name)
