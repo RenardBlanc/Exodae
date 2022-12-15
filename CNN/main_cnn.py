@@ -47,7 +47,7 @@ class predict_cnn():
         x_test = np.zeros((p,1))
         print(np.shape(x_test),np.shape(y_inter))
         for i in range(len(y_inter)):
-            x_test[i,1] = y_inter[i]
+            x_test[i,0] = y_inter[i]
         # Fonction pour prédire la classe d'un exemple
         if nb_mod==4:
             prediction = model.predict([x_test,x_test,x_test])
