@@ -28,7 +28,7 @@ def generate_profil(Mach,Re,classe,latent_dim = 100):
     labels[0,0] = classe
     # generate images
     X  = model.predict([latent_points, labels])
-    return X
+    return X[0]
 
 def plot_profil(coord_y,M,Re):
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
