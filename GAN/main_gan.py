@@ -50,6 +50,7 @@ def plot_profil(coord_y,M,Re,etat):
 def generate_profil(classe,M,Re):
     
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
+    print("ok1")
     plot_profil(coord_y_generated,M,Re,'gen')
     print("ok1")
     coord_y_liss = rolling_mean(coord_y_generated, 3)
