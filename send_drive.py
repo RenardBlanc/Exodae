@@ -17,7 +17,7 @@ import os
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = 'CNN/results/figure/'
+directory = 'GAN/figure/'
 
 
 if __name__ == '__main__':
