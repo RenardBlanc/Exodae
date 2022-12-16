@@ -46,10 +46,38 @@ def plot_profil(coord_y,M,Re,classe,etat):
     plt.title("Generated airfoil with GAN")
     plt.savefig(nom_figure)
 
-def generate_profil(classe,M,Re,lissage = 3):
+def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
+    # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
+    nrows = math.ceil(n_class / ncols)
+    # Créer une figure et un sous-plot pour chaque entrée de données
+    fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
+    for i, ax in enumerate(axs.flat):
+        print(i)
+        try:
+            # Tracer les données sur le sous-plot
+            ax.plot(x_coord,all_y_coord[i])
+        except:
+            pass
+    
+    mainFileName = pre_process_GAN.createMainFile_GAN('figure_moisaique/')
+    nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
+
+    # Afficher la figure
+    plt.savefig(nom_figure)
+
+def plot_mosaique(M,Re,mod):
+    all_y = []
+    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
+    for i in range(nb_class):
+        coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
+        coord_y_liss = rolling_mean(coord_y_generated, lissage= 10)
+        all_y.append(coord_y_liss)
+    plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
+
+
+def generate_profil(classe,M,Re,lissage = 10):
     
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
-    plot_profil(coord_y_generated,M,Re,classe,'gen')
     coord_y_liss = rolling_mean(coord_y_generated, lissage)
     plot_profil(coord_y_liss,M,Re,classe,'liss_{}'.format(lissage))
 
@@ -60,8 +88,12 @@ if __name__ == '__main__':
         M = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
         classe = int(sys.argv[3])
-        for lissage in range(3,20):
-            generate_profil(classe,M,Re,lissage= lissage)
+        generate_profil(classe,M,Re)
+
+    elif len(sys.argv) == 3:
+        M = int(sys.argv[1]) 
+        Re = int(sys.argv[2]) 
+        plot_mosaique(M,Re,'fin') 
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_class>')

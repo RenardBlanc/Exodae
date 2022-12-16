@@ -28,6 +28,7 @@ import pandas as pd
 import seaborn as snc
 import jenkspy as jk
 from itertools import combinations_with_replacement
+import math
 
 # Tensorflow
 import tensorflow as tf
@@ -394,7 +395,26 @@ class model():
         opt = Adam(learning_rate=0.0002, beta_1=0.5)
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
+    
+    def plot_subplots(n_class,x_coord,all_y_coord, epoch,Mach,Re,ncols = 10):
+        # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
+        nrows = math.ceil(n_class / ncols)
+        # Créer une figure et un sous-plot pour chaque entrée de données
+        fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
+        for i, ax in enumerate(axs.flat):
+            print(i)
+            try:
+                # Tracer les données sur le sous-plot
+                ax.plot(x_coord,all_y_coord[i])
+            except:
+                pass
         
+        mainFileName = pre_process_GAN.createMainFile_GAN('figure_entrainemen/t')
+        nom_figure = os.path.join(mainFileName, '_{}_{}_{}'.format(Mach,Re))
+
+        # Afficher la figure
+        plt.savefig(nom_figure)
+
     def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 10, nb_batch = 200):
         
         # Import des données de profils 
@@ -424,6 +444,14 @@ class model():
                 # summarize loss on this batch
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
+            if nb_epoch%100 ==0 and nb_epoch>0:
+                latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
+                # specify labels
+                labels = np.zeros((nb_class,1))
+                for i in range(nb_class):
+                    labels[nb_class,0] = i
+                # generate images
+                X = g_model.predict([latent_points, labels])
         # save the generator model
         name = 'GAN/cgan_generator_{}_{}_{}_{}.h5'.format(Mach,Re,nb_epoch,latent_dim)
         if os.path.exists(name):
