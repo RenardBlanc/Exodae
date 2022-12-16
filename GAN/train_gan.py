@@ -63,11 +63,16 @@ class pre_process_GAN():
 
     def save_Re_data_GAN(dict,model_name):
             mainFileName = pre_process_GAN.createMainFile_GAN('post_processed_data_GAN')
-            Re = dict['reynoldsNumber']
-            M = dict['Mach']
-            name = os.path.join(mainFileName,"{}_Re_{}_{}.pickle".format(model_name,M,Re))
-            with open(name, "wb") as tf:
-                pickle.dump(dict,tf)
+            try:
+                Re = dict['reynoldsNumber']
+                M = dict['Mach']
+                name = os.path.join(mainFileName,"{}_Re_{}_{}.pickle".format(model_name,M,Re))
+                with open(name, "wb") as tf:
+                    pickle.dump(dict,tf)
+            except:
+                name = os.path.join(mainFileName,"{}.pickle".format(model_name))
+                with open(name, "wb") as tf:
+                    pickle.dump(dict,tf)
     
     def discretisation_label(nom_profil_Re,donnee,nb_class):
         Re_fin = {'nom' : nom_profil_Re, 
@@ -122,7 +127,6 @@ class pre_process_GAN():
                 list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,donnee,nb_class)
                 err_max = (np.max(list_err)*100)
                 err_moy = (np.mean(list_err)*100)
-                print(err_max,err_moy)
                 if mod == 'aire':
                     if err_max <= 50 and err_moy <= 2.2:
                         index_class.append(nb_class)
@@ -305,7 +309,7 @@ class pre_process_GAN():
         # generate labels
         labels = np.random.randint(0, n_classes, n_samples)
         return [z_input, labels]
-                           
+
 class model():
 
     def discriminateur(nb_coord, nb_class):
