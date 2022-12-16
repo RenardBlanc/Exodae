@@ -65,9 +65,9 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
     # Afficher la figure
     plt.savefig(nom_figure)
 
-def plot_mosaique(M,Re,mod):
+def plot_mosaique(M,Re,mod,type):
     all_y = []
-    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
+    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re,mod,type) # Nombre de coordonnées et de profils
     for i in range(nb_class):
         coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
         coord_y_liss = rolling_mean(coord_y_generated, lissage= 10)
@@ -93,7 +93,7 @@ if __name__ == '__main__':
     elif len(sys.argv) == 3:
         M = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
-        plot_mosaique(M,Re,'fin') 
+        plot_mosaique(M,Re,'fin',1) 
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_class>')
