@@ -135,7 +135,7 @@ class pre_process_GAN():
                     if err_max <= 50 and err_moy <= 1:
                         index_class.append(nb_class)
                 elif mod =='fin' and type==2:
-                    if err_max <= 100 and err_moy <= 2.1:
+                    if err_max <= 100 and err_moy <= 1.5:
                         index_class.append(nb_class)
             except:
                 pass
@@ -234,8 +234,8 @@ class pre_process_GAN():
             # Modèle avec l'aire et finesse
             score = np.sqrt(np.power(aire_local,2) + np.power(finesse_max_local,2))
             new_score = pre_process_GAN.normal_score(score)
-            nb_class_score = pre_process_GAN.choix_nb_classe(nom_profil,new_score,'fin',2)
-            score_classe = pre_process_GAN.list_label(nom_profil,new_score,nb_class_score)
+            nb_class_score = pre_process_GAN.choix_nb_classe(nom_profil_local,new_score,'fin',2)
+            score_classe = pre_process_GAN.list_label(nom_profil_local,new_score,nb_class_score)
 
 
             dict = {'x_train' : ally_local,
