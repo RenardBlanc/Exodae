@@ -421,7 +421,7 @@ if __name__ == "__main__":
         Mach = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
         epoch = int(sys.argv[3]) 
-        mod = int(sys.argv[4]) 
+        mod = str(sys.argv[4]) 
         type = int(sys.argv[5]) 
         latent_dim = 100
         batch_size = 50
