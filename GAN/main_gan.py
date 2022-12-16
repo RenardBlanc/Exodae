@@ -40,9 +40,9 @@ def rolling_mean(data, window_size):
     data_mean[i] = np.mean(data[i:i+window_size])
   return data_mean
 
-def plot_profil(coord_y,M,Re,classe,etat):
-    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re) # Nombre de coordonnées et de profils
-    mainFileName = pre_process_GAN.createMainFile_GAN('figure')
+def plot_profil(coord_y,M,Re,classe,mod,type,etat):
+    x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re,mod,type) # Nombre de coordonnées et de profils
+    mainFileName = pre_process_GAN.createMainFile_GAN('figures')
     nom_figure = os.path.join(mainFileName, etat + '_{}_{}_{}'.format(M,Re,classe))
     plt.figure(figsize = (12,8))
     plt.plot(x_coord_ini,coord_y)
@@ -59,11 +59,8 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
             # Tracer les données sur le sous-plot
             ax.plot(x_coord,all_y_coord[i])
         except:
-            pass
-    
-
-    
-    mainFileName = pre_process_GAN.createMainFile_GAN('figure_moisaique/')
+            pass    
+    mainFileName = pre_process_GAN.createMainFile_GAN('figures/')
     nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
     if os.path.exists(nom_figure):
         os.remove(nom_figure)
@@ -78,16 +75,15 @@ def plot_mosaique(M,Re,mod,type):
         coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
         coord_y_liss = rolling_mean(coord_y_generated,10)
         all_y.append(coord_y_liss)
-    print(all_y)
     plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] La figure a été enregistré ")
 
 
-def generate_profil(classe,M,Re,lissage = 10):
+def generate_profil(classe,M,Re,mod,type,lissage = 10):
     
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
     coord_y_liss = rolling_mean(coord_y_generated, lissage)
-    plot_profil(coord_y_liss,M,Re,classe,'liss_{}'.format(lissage))
+    plot_profil(coord_y_liss,M,Re,classe,mod,type,'liss_{}'.format(lissage))
 
 
 if __name__ == '__main__':
@@ -95,7 +91,7 @@ if __name__ == '__main__':
         M = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
         classe = int(sys.argv[3])
-        generate_profil(classe,M,Re)
+        generate_profil(classe,M,Re,'fin',1)
 
     elif len(sys.argv) == 3:
         M = int(sys.argv[1]) 
