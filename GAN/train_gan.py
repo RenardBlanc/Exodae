@@ -253,14 +253,23 @@ class pre_process_GAN():
             
             pre_process_GAN.save_Re_data_GAN(dict,'fin')
         lg.info("Data saved for learning.")
+    
     def get_data_pre_process_GAN(M,Re,mod):
-        
-        if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
-            pre_process_GAN.get_data()
+        if mod = 'fin':
+            if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
+                pre_process_GAN.get_data()
 
-        with open(r"GAN/post_processed_data_GAN/{}_Re_{}_{}.pickle".format(mod,M,Re), "rb") as file:
-                dict_ok = pickle.load(file)
-        return dict_ok
+            with open(r"GAN/post_processed_data_GAN/{}_Re_{}_{}.pickle".format(mod,M,Re), "rb") as file:
+                    dict_ok = pickle.load(file)
+            return dict_ok
+        else:
+            if not os.path.exists(r'GAN/post_processed_data_GAN/{}'.format(mod)):
+                pre_process_GAN.get_data()
+
+            with open(r"GAN/post_processed_data_GAN/{}.pickle".format(mod), "rb") as file:
+                    dict_ok = pickle.load(file)
+            return dict_ok
+
 
     def data_GAN(M,Re,mod,type):
         '''
