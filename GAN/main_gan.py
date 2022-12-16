@@ -53,7 +53,7 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
     # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
     nrows = math.ceil(n_class / ncols)
     # Créer une figure et un sous-plot pour chaque entrée de données
-    fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
+    fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
     for i, ax in enumerate(axs.flat):
         try:
             # Tracer les données sur le sous-plot
@@ -75,6 +75,7 @@ def plot_mosaique(M,Re,mod,type):
         coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
         coord_y_liss = rolling_mean(coord_y_generated,10)
         all_y.append(coord_y_liss)
+        print(all_y)
     plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] La figure a été enregistré ")
 
