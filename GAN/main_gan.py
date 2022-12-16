@@ -45,7 +45,7 @@ def generateur_all_prediction(Mach,Re,nb_class,latent_dim = 100):
         labels[i,0] = i
     # generate images
     X  = model.predict([latent_points, labels])
-    return X[0]
+    return X
 
 def rolling_mean(data, window_size):
   data_mean = np.empty(data.size)
