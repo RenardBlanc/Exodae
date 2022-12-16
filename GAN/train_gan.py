@@ -119,7 +119,6 @@ class pre_process_GAN():
         index_class = []
 
         for nb_class in range(10,100):
-            print(nb_class)
             try:
                 list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,aire,nb_class)
                 err_max = (np.max(list_err)*100)
@@ -129,6 +128,7 @@ class pre_process_GAN():
                 if err_max <= 50 and err_moy <= 1:
                     index_class.append(nb_class)
             except:
+                print(error)
                 pass
 
         #print('Pour Re = {}, il faut prendre {} classes pour respecter les critères.'.format(Re,index_class[0]))
