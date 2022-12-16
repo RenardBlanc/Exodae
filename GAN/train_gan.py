@@ -127,7 +127,6 @@ class pre_process_GAN():
                 list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,donnee,nb_class)
                 err_max = (np.max(list_err)*100)
                 err_moy = (np.mean(list_err)*100)
-                print(err_max,err_moy)
                 if mod == 'aire':
                     if err_max <= 50 and err_moy <= 2.2:
                         index_class.append(nb_class)
@@ -174,6 +173,7 @@ class pre_process_GAN():
         return new_score
 
     def get_data():
+        lg.info("getting data for learning....")
         x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 31, nb_LE = 20, nb_TE = 10)
         # On cherche les données de polaire pour un nombre de Mach nul et 
         # des nombres de Reynolds allant de 50000 à 1000000
@@ -251,7 +251,7 @@ class pre_process_GAN():
                     }
             
             pre_process_GAN.save_Re_data_GAN(dict,'fin')
-
+        lg.info("Data saved for learning.")
     def get_data_pre_process_GAN(M,Re,mod):
         
         if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
