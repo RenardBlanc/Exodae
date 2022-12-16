@@ -230,7 +230,7 @@ class pre_process_GAN():
             finesse_max_classe = pre_process_GAN.list_label(nom_profil_local,finesse_max_local,nb_class_fin)
 
             # Modèle avec l'aire et finesse
-            score = np.sqrt(aire_local**2 + finesse_max_local**2)
+            score = np.sqrt(np.power(aire_local,2) + np.power(finesse_max_local,2))
             new_score = pre_process_GAN.normal_score(score)
             nb_class_score = pre_process_GAN.choix_nb_classe(nom_profil,new_score,'fin',2)
             score_classe = pre_process_GAN.list_label(nom_profil,new_score,nb_class_score)
