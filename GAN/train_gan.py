@@ -465,7 +465,7 @@ class model():
                 all_y = []
                 coord_y_generated = g_model.predict([latent_points, labels])
                 for i in range(nb_class):
-                    labels[nb_class,0] = i
+                    labels[i,0] = i
                     all_y.append(model.rolling_mean(coord_y_generated[i],10))
                 
                 model.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,mod,ncols = 10)
