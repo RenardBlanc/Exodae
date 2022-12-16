@@ -69,72 +69,77 @@ class pre_process_GAN():
             with open(name, "wb") as tf:
                 pickle.dump(dict,tf)
     
-    def discretisation_label(nom_profil_Re,aire,nb_class):
+    def discretisation_label(nom_profil_Re,donnee,nb_class):
         Re_fin = {'nom' : nom_profil_Re, 
-                        'finesse_max' : aire}
+                 'donnee' : donnee}
 
         df_fin = pd.DataFrame(Re_fin)
 
-        intervalle = jk.jenks_breaks(df_fin['aire'], n_classes=nb_class)
-        df_fin['classe'] = pd.cut(df_fin['aire'],
+        intervalle = jk.jenks_breaks(df_fin['donnee'], n_classes=nb_class)
+        df_fin['classe'] = pd.cut(df_fin['donnee'],
                             bins=intervalle,
                             labels=[i for i in range(1,nb_class+1)],
                             include_lowest=True)
         return df_fin, intervalle
     
     def classe2aire(classe,intervalle):
-        aire_loc = (intervalle[classe-1] + intervalle[classe])/2
-        return np.round(aire_loc,2)
+        donnee_loc = (intervalle[classe-1] + intervalle[classe])/2
+        return np.round(donnee_loc,2)
     
     def aire_classe(df_fin,intervalle):
         # Cette fonction permet de rajouter dans le dataframe pandas
         # les données de finesse_max associée au classes
-        aire_fct = []
-        for i in range(len(df_fin['aire'])):
+        donnee_fct = []
+        for i in range(len(df_fin['donnee'])):
             classe = df_fin['classe'][i]
-            aire_fct.append(pre_process_GAN.classe2aire(classe,intervalle))
+            donnee_fct.append(pre_process_GAN.classe2aire(classe,intervalle))
         
-        df_fin['aire_class'] = aire_fct
+        df_fin['donnee_class'] = donnee_fct
         return df_fin
 
-    def comparaison_fin_fct_Re(nom_profil_Re,aire,nb_class):
+    def comparaison_fin_fct_Re(nom_profil_Re,donnee,nb_class):
 
-        df_fin, intervalle = pre_process_GAN.discretisation_label(nom_profil_Re,aire,nb_class)
+        df_fin, intervalle = pre_process_GAN.discretisation_label(nom_profil_Re,donnee,nb_class)
         df_fin = pre_process_GAN.aire_classe(df_fin,intervalle)
 
         list_err = []
-        for i in range(len(df_fin['aire'])):
-            aire_reelle = df_fin['aire'][i]
-            aire_fct = df_fin['aire_class'][i]
+        for i in range(len(df_fin['donnee'])):
+            donnee_reelle = df_fin['donnee'][i]
+            donnee_fct = df_fin['donnee_class'][i]
             
-            if aire_reelle != 0:
-                err = np.abs((aire_reelle - aire_fct)) / np.abs((aire_reelle))
+            if donnee_reelle != 0:
+                err = np.abs((donnee_reelle - donnee_fct)) / np.abs((donnee_reelle))
             else :
                 pass
             list_err.append(err)
-        print(list_err)
         return list_err
 
-    def choix_nb_classe(nom_profil_Re,aire):
+    def choix_nb_classe(nom_profil_Re,donnee,mod,type):
         index_class = []
 
         for nb_class in range(10,100):
             try:
-                list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,aire,nb_class)
+                list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,donnee,nb_class)
                 err_max = (np.max(list_err)*100)
                 err_moy = (np.mean(list_err)*100)
                 print(err_max,err_moy)
-
-                if err_max <= 50 and err_moy <= 1:
-                    index_class.append(nb_class)
+                if mod == 'aire':
+                    if err_max <= 50 and err_moy <= 2.2:
+                        index_class.append(nb_class)
+                elif mod =='fin' and type==1:
+                    if err_max <= 50 and err_moy <= 1:
+                        index_class.append(nb_class)
+                elif mod =='fin' and type==2:
+                    if err_max <= 100 and err_moy <= 1.5:
+                        index_class.append(nb_class)
             except:
                 pass
 
         #print('Pour Re = {}, il faut prendre {} classes pour respecter les critères.'.format(Re,index_class[0]))
         return index_class[0]
     
-    def list_label(nom_profil,aire,nb_class):
-        df_fin, intervalle = pre_process_GAN.discretisation_label(nom_profil,aire,nb_class)
+    def list_label(nom_profil,donnee,nb_class):
+        df_fin, intervalle = pre_process_GAN.discretisation_label(nom_profil,donnee,nb_class)
         df_fin = pre_process_GAN.aire_classe(df_fin,intervalle)
         classe_list = list(np.array(list(df_fin['classe'])) - 1)
 
@@ -154,6 +159,14 @@ class pre_process_GAN():
             aire_local.pop(index)
         ally_local = ally_local.compress(np.logical_not(z), axis = 1)
         return ally_local,finesse_max_local,nom_profil_local,aire_local
+
+        
+    def normal_score(score):
+        new_score = []
+        max_score = np.max(score)
+        min_score = np.min(score)
+        new_score = np.divide(np.add(score,-min_score),(max_score-min_score))
+        return new_score
 
     def get_data():
         x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 31, nb_LE = 20, nb_TE = 10)
@@ -187,7 +200,7 @@ class pre_process_GAN():
         # On calcule l'aire de tous les profils
         aire = lb.air_profils(x_coord_initial,ally)
         
-        nb_class_aire = pre_process_GAN.choix_nb_classe(nom_profil,aire)
+        nb_class_aire = pre_process_GAN.choix_nb_classe(nom_profil,aire,'aire',1)
         aire_classe = pre_process_GAN.list_label(nom_profil,aire,nb_class_aire)
 
         # On construit le modèle de données pour le modèle avec
@@ -209,13 +222,14 @@ class pre_process_GAN():
             ally_local,finesse_max_local,nom_profil_local,aire_local = pre_process_GAN.keep_data_wh(no_data_all[i],ally,nom_profil,finesse_max[i],aire)
             
             # Modèle avec la finesse
-            nb_class_fin = pre_process_GAN.choix_nb_classe(nom_profil_local,finesse_max_local)
+            nb_class_fin = pre_process_GAN.choix_nb_classe(nom_profil_local,finesse_max_local,'fin',1)
             finesse_max_classe = pre_process_GAN.list_label(nom_profil_local,finesse_max_local,nb_class_fin)
 
             # Modèle avec l'aire et finesse
             score = np.sqrt(aire_local**2 + finesse_max_local**2)
-            nb_class_score = pre_process_GAN.choix_nb_classe(nom_profil,score)
-            score_classe = pre_process_GAN.list_label(nom_profil,score,nb_class_score)
+            new_score = pre_process_GAN.normal_score(score)
+            nb_class_score = pre_process_GAN.choix_nb_classe(nom_profil,new_score,'fin',2)
+            score_classe = pre_process_GAN.list_label(nom_profil,new_score,nb_class_score)
 
 
             dict = {'x_train' : ally_local,
@@ -291,8 +305,7 @@ class pre_process_GAN():
         # generate labels
         labels = np.random.randint(0, n_classes, n_samples)
         return [z_input, labels]
-        
-
+                           
 class model():
 
     def discriminateur(nb_coord, nb_class):
@@ -412,9 +425,9 @@ class model():
         g_model.save(name)
 
 if __name__ == "__main__":
-    # ----------
+    # -----------
     # Paramètres 
-    # ----------
+    # -----------
     if len(sys.argv) != 6:
         raise Exception(
             'Entrer <Nombre de Mach> <Nombre de Reynolds><Dimension latente> <BATCH_SIZE> <EPOCHS> ')
