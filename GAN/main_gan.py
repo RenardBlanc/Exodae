@@ -34,7 +34,7 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
     return X[0]
 
 def generateur_all_prediction(Mach,Re,nb_classe,latent_dim = 100):
-    lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour une classe de {}".format(classe))
+    lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour toutes les classe")
 
     model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
     # generate images
