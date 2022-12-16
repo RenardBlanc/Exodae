@@ -255,7 +255,7 @@ class pre_process_GAN():
         lg.info("Data saved for learning.")
     
     def get_data_pre_process_GAN(M,Re,mod):
-        if mod = 'fin':
+        if mod == 'fin':
             if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
                 pre_process_GAN.get_data()
 
