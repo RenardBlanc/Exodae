@@ -490,7 +490,7 @@ if __name__ == "__main__":
         mod = str(sys.argv[4]) 
         type = int(sys.argv[5]) 
         latent_dim = 100
-        batch_size = 50
+        batch_size = 400
     
     # Import des données de profils 
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(Mach,Re,mod,type) # Nombre de coordonnées et de profils
