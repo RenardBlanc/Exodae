@@ -112,7 +112,7 @@ class pre_process_GAN():
             else :
                 pass
             list_err.append(err)
-        
+        print(list_err)
         return list_err
 
     def choix_nb_classe(nom_profil_Re,aire):
@@ -128,7 +128,6 @@ class pre_process_GAN():
                 if err_max <= 50 and err_moy <= 1:
                     index_class.append(nb_class)
             except:
-                print(error)
                 pass
 
         #print('Pour Re = {}, il faut prendre {} classes pour respecter les critères.'.format(Re,index_class[0]))
