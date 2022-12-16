@@ -70,7 +70,6 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
     fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
     for i, ax in enumerate(axs.flat):
         try:
-            print(np.shape(all_y_coord[i]))
             # Tracer les données sur le sous-plot
             ax.plot(x_coord,all_y_coord[i])
         except:

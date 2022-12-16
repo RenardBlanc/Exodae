@@ -416,7 +416,6 @@ class model():
         fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
         for i, ax in enumerate(axs.flat):
             try:
-                print(np.shape(all_y_coord[i]))
                 # Tracer les données sur le sous-plot
                 ax.plot(x_coord,all_y_coord[i])
             except:
@@ -458,7 +457,7 @@ class model():
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
             
-            if nb_epoch%100 ==0 and nb_epoch>0:
+            if i%100 ==0 and nb_epoch>0:
                 latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
                 # specify labels
                 labels = np.zeros((nb_class,1))
