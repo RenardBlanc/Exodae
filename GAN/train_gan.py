@@ -174,7 +174,7 @@ class pre_process_GAN():
         return new_score
 
     def get_data():
-        lg.info("getting data for learning....")
+        lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Getting data for learning....")
         x_coord_initial,ally,nom_profil,marchepas = format.coordinate(nb_point = 31, nb_LE = 20, nb_TE = 10)
         # On cherche les données de polaire pour un nombre de Mach nul et 
         # des nombres de Reynolds allant de 50000 à 1000000
@@ -186,7 +186,6 @@ class pre_process_GAN():
         no_data_all = [] 
         for j in range(len(Re_list)):
             Re = Re_list[j]
-            lg.info('For Re = {}'.format(Re))
             # Certaines données de polaire ne sont pas disponible pour tous
             # les profils
             no_data = [] 
@@ -221,7 +220,7 @@ class pre_process_GAN():
                 'coordonnee_x' : x_coord_initial
                 }
         pre_process_GAN.save_Re_data_GAN(dict,'aire')
-        lg.info("Dictionnaire 'aire' saved for learning.")
+        lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "]Dictionnaire 'aire' saved for learning.")
         # Maintenant on garde uniquement les profils dont on a la 
         # la finesse max pour les modèles impliquant la finesse
         for i in range(len(Re_list)):
@@ -249,9 +248,9 @@ class pre_process_GAN():
                     'Mach' : 0,
                     'coordonnee_x' : x_coord_initial
                     }
-            lg.info("Dictionnaire 'fin' saved for learning.")
+            lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Dictionnaire 'fin' saved for learning for Re = {}".format(Re_list[i]))
             pre_process_GAN.save_Re_data_GAN(dict,'fin')
-        lg.info("Data saved for learning.")
+        lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "]Data saved for learning.")
     
     def get_data_pre_process_GAN(M,Re,mod):
         if mod == 'fin':

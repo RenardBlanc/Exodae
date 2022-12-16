@@ -52,7 +52,6 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
     # Créer une figure et un sous-plot pour chaque entrée de données
     fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
     for i, ax in enumerate(axs.flat):
-        print(i)
         try:
             # Tracer les données sur le sous-plot
             ax.plot(x_coord,all_y_coord[i])

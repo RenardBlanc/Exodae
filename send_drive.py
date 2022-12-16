@@ -17,7 +17,7 @@ import os
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = r'GAN/figure/'
+directory = r'GAN/figure_moisaique/'
 
 
 if __name__ == '__main__':
