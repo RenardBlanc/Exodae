@@ -33,6 +33,20 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
     X  = model.predict([latent_points, labels])
     return X[0]
 
+def generateur_all_prediction(Mach,Re,nb_classe,latent_dim = 100):
+    lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour une classe de {}".format(classe))
+
+    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
+    # generate images
+    latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
+    # specify labels
+    labels = np.zeros((nb_class,1))
+    for i in range(nb_class):
+        labels[i,0] = i
+    # generate images
+    X  = model.predict([latent_points, labels])
+    return X[0]
+
 def rolling_mean(data, window_size):
   data_mean = np.empty(data.size)
   for i in range(data.size):
@@ -71,10 +85,9 @@ def plot_mosaique(M,Re,mod,type):
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Début du tracé du plot mosaique avec Re = et M = pour le mod = {}".format(Re,M,mod))
     all_y = []
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re,mod,type) # Nombre de coordonnées et de profils
+    coord_y_generated = generateur_all_prediction(M,Re,nb_class,latent_dim = 100)
     for i in range(nb_class):
-        coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
-        coord_y_liss = rolling_mean(coord_y_generated,10)
-        all_y.append(coord_y_liss)
+        all_y.append(rolling_mean(coord_y_generated[i],10))
     plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] La figure a été enregistré ")
 
