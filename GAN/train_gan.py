@@ -409,7 +409,7 @@ class model():
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
     
-    def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
+    def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,epoch,mod,ncols = 10):
         # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
         nrows = math.ceil(n_class / ncols)
         # Créer une figure et un sous-plot pour chaque entrée de données
@@ -421,7 +421,7 @@ class model():
             except:
                 pass    
         mainFileName = pre_process_GAN.createMainFile_GAN('figures_train/')
-        nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
+        nom_figure = os.path.join(mainFileName, '{}_{}_{}_{}'.format(epoch,mod,Mach,Re))
         if os.path.exists(nom_figure):
             os.remove(nom_figure)
         # Afficher la figure
@@ -457,7 +457,7 @@ class model():
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
             
-            if i%100 ==0 and nb_epoch>0:
+            if i%100 ==0:
                 latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
                 # specify labels
                 labels = np.zeros((nb_class,1))
@@ -467,7 +467,7 @@ class model():
                     labels[i,0] = i
                     all_y.append(model.rolling_mean(coord_y_generated[i],10))
                 
-                model.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,mod,ncols = 10)
+                model.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,i,mod,ncols = 10)
                 
                 
         # save the generator model
