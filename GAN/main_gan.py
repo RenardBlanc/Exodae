@@ -70,7 +70,7 @@ def plot_mosaique(M,Re,mod,type):
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re,mod,type) # Nombre de coordonnées et de profils
     for i in range(nb_class):
         coord_y_generated = generateur_prediction(M,Re,i,latent_dim = 100)
-        coord_y_liss = rolling_mean(coord_y_generated, lissage= 10)
+        coord_y_liss = rolling_mean(coord_y_generated,10)
         all_y.append(coord_y_liss)
     plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
 

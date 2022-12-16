@@ -186,7 +186,7 @@ class pre_process_GAN():
         no_data_all = [] 
         for j in range(len(Re_list)):
             Re = Re_list[j]
-            print(Re)
+            lg.info('For Re = {}'.format(Re))
             # Certaines données de polaire ne sont pas disponible pour tous
             # les profils
             no_data = [] 
@@ -221,8 +221,7 @@ class pre_process_GAN():
                 'coordonnee_x' : x_coord_initial
                 }
         pre_process_GAN.save_Re_data_GAN(dict,'aire')
-
-
+        lg.info("Dictionnaire 'aire' saved for learning.")
         # Maintenant on garde uniquement les profils dont on a la 
         # la finesse max pour les modèles impliquant la finesse
         for i in range(len(Re_list)):
@@ -250,7 +249,7 @@ class pre_process_GAN():
                     'Mach' : 0,
                     'coordonnee_x' : x_coord_initial
                     }
-            
+            lg.info("Dictionnaire 'fin' saved for learning.")
             pre_process_GAN.save_Re_data_GAN(dict,'fin')
         lg.info("Data saved for learning.")
     
