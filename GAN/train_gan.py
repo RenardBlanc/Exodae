@@ -185,6 +185,7 @@ class pre_process_GAN():
         no_data_all = [] 
         for j in range(len(Re_list)):
             Re = Re_list[j]
+            print(Re)
             # Certaines données de polaire ne sont pas disponible pour tous
             # les profils
             no_data = [] 
