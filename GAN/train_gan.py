@@ -254,14 +254,14 @@ class pre_process_GAN():
     
     def get_data_pre_process_GAN(M,Re,mod):
         if mod == 'fin':
-            if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
+            if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}.pickle'.format(mod,M,Re)):
                 pre_process_GAN.get_data()
 
             with open(r"GAN/post_processed_data_GAN/{}_Re_{}_{}.pickle".format(mod,M,Re), "rb") as file:
                     dict_ok = pickle.load(file)
             return dict_ok
-        else:
-            if not os.path.exists(r'GAN/post_processed_data_GAN/{}'.format(mod)):
+        elif mod == 'aire':
+            if not os.path.exists(r'GAN/post_processed_data_GAN/{}.pickle'.format(mod)):
                 pre_process_GAN.get_data()
 
             with open(r"GAN/post_processed_data_GAN/{}.pickle".format(mod), "rb") as file:
@@ -409,7 +409,6 @@ class model():
         # Créer une figure et un sous-plot pour chaque entrée de données
         fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
         for i, ax in enumerate(axs.flat):
-            print(i)
             try:
                 # Tracer les données sur le sous-plot
                 ax.plot(x_coord,all_y_coord[i])
@@ -451,6 +450,7 @@ class model():
                 # summarize loss on this batch
                 print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
                     (i+1, j+1, nb_batch_per_epoch, d_loss1, d_loss2, g_loss))
+            
             if nb_epoch%100 ==0 and nb_epoch>0:
                 latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
                 # specify labels
