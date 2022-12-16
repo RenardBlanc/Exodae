@@ -61,9 +61,12 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
         except:
             pass
     
+
+    
     mainFileName = pre_process_GAN.createMainFile_GAN('figure_moisaique/')
     nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
-
+    if os.path.exists(nom_figure):
+        os.remove(nom_figure)
     # Afficher la figure
     plt.savefig(nom_figure)
 
