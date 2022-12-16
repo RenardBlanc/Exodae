@@ -22,10 +22,11 @@ from GAN.train_gan import *
 def generateur_prediction(Mach,Re,classe,latent_dim = 100):
     model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
     # generate images
-    latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, 1)
+    latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
     # specify labels
-    labels = np.zeros((1,1))
-    labels[0,0] = classe
+    labels = np.zeros((nb_class,1))
+    for i in range(nb_class):
+        labels[nb_class,0] = i
     # generate images
     X  = model.predict([latent_points, labels])
     return X[0]
