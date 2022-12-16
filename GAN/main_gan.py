@@ -22,11 +22,11 @@ from GAN.train_gan import *
 def generateur_prediction(Mach,Re,classe,latent_dim = 100):
     model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
     # generate images
-    latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
+    latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, classe)
     # specify labels
-    labels = np.zeros((nb_class,1))
-    for i in range(nb_class):
-        labels[nb_class,0] = i
+    labels = np.zeros((1,1))
+    
+    labels[0,0] = classe
     # generate images
     X  = model.predict([latent_points, labels])
     return X[0]
@@ -80,7 +80,6 @@ def generate_profil(classe,M,Re,lissage = 10):
     coord_y_generated = generateur_prediction(M,Re,classe,latent_dim = 100)
     coord_y_liss = rolling_mean(coord_y_generated, lissage)
     plot_profil(coord_y_liss,M,Re,classe,'liss_{}'.format(lissage))
-
 
 
 if __name__ == '__main__':
