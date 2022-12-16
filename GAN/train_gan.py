@@ -127,6 +127,7 @@ class pre_process_GAN():
                 list_err = pre_process_GAN.comparaison_fin_fct_Re(nom_profil_Re,donnee,nb_class)
                 err_max = (np.max(list_err)*100)
                 err_moy = (np.mean(list_err)*100)
+                print(err_max,err_moy)
                 if mod == 'aire':
                     if err_max <= 50 and err_moy <= 2.2:
                         index_class.append(nb_class)
