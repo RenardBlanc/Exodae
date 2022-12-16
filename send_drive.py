@@ -14,10 +14,12 @@ import dropbox
 from dropbox import Dropbox
 import os
 
+
+
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = r'GAN/figure_moisaique/'
+directory = r'GAN/figures/'
 
 
 if __name__ == '__main__':
