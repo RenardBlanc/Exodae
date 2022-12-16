@@ -135,7 +135,7 @@ class pre_process_GAN():
                     if err_max <= 50 and err_moy <= 1:
                         index_class.append(nb_class)
                 elif mod =='fin' and type==2:
-                    if err_max <= 100 and err_moy <= 1.5:
+                    if err_max <= 100 and err_moy <= 2.1:
                         index_class.append(nb_class)
             except:
                 pass
