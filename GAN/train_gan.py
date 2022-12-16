@@ -375,6 +375,12 @@ class model():
         generateur = Model(inputs = [in_lat,in_lab],outputs = output)
         return generateur
 
+    def rolling_mean(data, window_size):
+        data_mean = np.empty(data.size)
+        for i in range(data.size):
+            # Calculate the mean of the surrounding data points
+            data_mean[i] = np.mean(data[i:i+window_size])
+        return data_mean
     
     # use the generator to generate n fake examples, with class labels
     def generate_fake_samples(generator, latent_dim, n_samples):
@@ -403,25 +409,26 @@ class model():
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
     
-    def plot_subplots(n_class,x_coord,all_y_coord, epoch,Mach,Re,ncols = 10):
+    def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
         # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
         nrows = math.ceil(n_class / ncols)
         # Créer une figure et un sous-plot pour chaque entrée de données
-        fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
+        fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
         for i, ax in enumerate(axs.flat):
             try:
+                print(np.shape(all_y_coord[i]))
                 # Tracer les données sur le sous-plot
                 ax.plot(x_coord,all_y_coord[i])
             except:
-                pass
-        
-        mainFileName = pre_process_GAN.createMainFile_GAN('figure_entrainemen/t')
-        nom_figure = os.path.join(mainFileName, '_{}_{}_{}'.format(Mach,Re))
-
+                pass    
+        mainFileName = pre_process_GAN.createMainFile_GAN('figures_train/')
+        nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
+        if os.path.exists(nom_figure):
+            os.remove(nom_figure)
         # Afficher la figure
         plt.savefig(nom_figure)
 
-    def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = 10, nb_batch = 200):
+    def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model,mod,type,nb_class, nb_epoch = 10, nb_batch = 200):
         
         # Import des données de profils 
         nb_coord =  np.shape(x_train)[1]
@@ -455,10 +462,15 @@ class model():
                 latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
                 # specify labels
                 labels = np.zeros((nb_class,1))
+                all_y = []
+                coord_y_generated = g_model.predict([latent_points, labels])
                 for i in range(nb_class):
                     labels[nb_class,0] = i
-                # generate images
-                X = g_model.predict([latent_points, labels])
+                    all_y.append(model.rolling_mean(coord_y_generated[i],10))
+                
+                model.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,mod,ncols = 10)
+                
+                
         # save the generator model
         name = 'GAN/cgan_generator_{}_{}_{}_{}.h5'.format(Mach,Re,nb_epoch,latent_dim)
         if os.path.exists(name):
@@ -490,4 +502,4 @@ if __name__ == "__main__":
     g_model = model.generateur(nb_coord,latent_dim,nb_class)
     # create the gan
     gan_model = model.gan(d_model, g_model)
-    model.train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model, nb_epoch = epoch, nb_batch = batch_size)
+    model.train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model,mod,type,nb_class, nb_epoch = epoch, nb_batch = batch_size)
