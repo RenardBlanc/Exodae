@@ -234,7 +234,7 @@ class pre_process_GAN():
     def get_data_pre_process_GAN(M,Re,mod):
         
         if not os.path.exists(r'GAN/post_processed_data_GAN/{}_Re_{}_{}'.format(mod,M,Re)):
-            pre_process_GAN.save_data_pre_process_GAN()
+            pre_process_GAN.get_data()
 
         with open(r"GAN/post_processed_data_GAN/{}_Re_{}_{}.pickle".format(mod,M,Re), "rb") as file:
                 dict_ok = pickle.load(file)
