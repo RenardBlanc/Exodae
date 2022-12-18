@@ -86,7 +86,7 @@ def plot_mosaique(M,Re,mod,type):
     all_y = []
     x_train,y_train,nb_class,x_coord_ini = pre_process_GAN.data_GAN(M,Re,mod,type) # Nombre de coordonnées et de profils
     coord_y_generated = generateur_all_prediction(M,Re,nb_class,latent_dim = 100)
-    for i in range(nb_class-1):
+    for i in range(nb_class):
         all_y.append(rolling_mean(coord_y_generated[i],10))
     plot_subplots(nb_class,x_coord_ini,all_y,M,Re,mod,ncols = 10)
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] La figure a été enregistré ")
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     elif len(sys.argv) == 3:
         M = int(sys.argv[1]) 
         Re = int(sys.argv[2]) 
-        plot_mosaique(M,Re,'fin',1) 
+        plot_mosaique(M,Re,'aire',1) 
     else:
         raise Exception(
             'Entrer <Nb_Mach> <Nb_Re> <Nb_class>')
