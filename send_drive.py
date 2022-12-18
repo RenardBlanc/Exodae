@@ -19,7 +19,7 @@ import os
 # On liste dans un premier temps les modèles présents:
 # ------------------------------------------------
 # Nom du répertoire
-directory = r'GAN/figures_train/'
+directory = r'GAN/figures/'
 
 
 if __name__ == '__main__':
