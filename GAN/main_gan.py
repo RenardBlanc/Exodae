@@ -74,7 +74,7 @@ def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,mod,ncols = 10):
             ax.plot(x_coord,all_y_coord[i])
         except:
             pass    
-    mainFileName = pre_process_GAN.createMainFile_GAN('figures/')
+    mainFileName = pre_process_GAN.createMainFile_GAN('figures_mois/')
     nom_figure = os.path.join(mainFileName, '{}_{}_{}'.format(mod,Mach,Re))
     if os.path.exists(nom_figure):
         os.remove(nom_figure)
