@@ -36,7 +36,7 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
 def generateur_all_prediction(Mach,Re,nb_class,latent_dim = 100):
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour toutes les classe")
 
-    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
+    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_1000_{}.h5'.format(Mach,Re,latent_dim))
     # generate images
     latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
     # specify labels
