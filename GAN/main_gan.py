@@ -19,10 +19,10 @@ sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
 from GAN.train_gan import *
 
 
-def generateur_prediction(Mach,Re,classe,latent_dim = 100):
+def generateur_prediction(Mach,Re,epoch,classe,latent_dim = 100):
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour une classe de {}".format(classe))
 
-    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}.h5'.format(Mach,Re,latent_dim))
+    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}_{}.h5'.format(Mach,Re,epoch,latent_dim))
     # generate images
     latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, 1)
     # specify labels
@@ -33,10 +33,10 @@ def generateur_prediction(Mach,Re,classe,latent_dim = 100):
     X  = model.predict([latent_points, labels])
     return X[0]
 
-def generateur_all_prediction(Mach,Re,nb_class,latent_dim = 100):
+def generateur_all_prediction(Mach,Re,nb_class,epoch = 1000,latent_dim = 100):
     lg.info("[" + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")) + "] Prédiction d'un profils avec le modèle enregistré pour toutes les classe")
 
-    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_1000_{}.h5'.format(Mach,Re,latent_dim))
+    model  = tf.keras.models.load_model('GAN/cgan_generator_{}_{}_{}_{}.h5'.format(Mach,Re,epoch,latent_dim))
     # generate images
     latent_points, labels = pre_process_GAN.generate_latent_points(latent_dim, nb_class)
     # specify labels
