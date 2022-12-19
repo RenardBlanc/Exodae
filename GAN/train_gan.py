@@ -91,7 +91,7 @@ class pre_process_GAN():
     def classe2aire(classe,intervalle):
         donnee_loc = (intervalle[classe-1] + intervalle[classe])/2
         return np.round(donnee_loc,2)
-    
+       
     def aire_classe(df_fin,intervalle):
         # Cette fonction permet de rajouter dans le dataframe pandas
         # les données de finesse_max associée au classes
@@ -238,12 +238,13 @@ class pre_process_GAN():
 
 
             dict = {'x_train' : ally_local,
-                    'y_train_fin' : finesse_max_local,
+                    'y_train_fin' : finesse_max_classe,
                     'nb_classe_fin' : nb_class_fin,
                     'y_train_fin_aire' : score_classe,
                     'nb_classe_fin_aire' : nb_class_score,
                     'nom_profil' : nom_profil_local,
                     'aire' : aire_local,
+                    'finesse_max' : finesse_max_local,
                     'reynoldsNumber' : Re_list[i],
                     'Mach' : 0,
                     'coordonnee_x' : x_coord_initial
@@ -408,24 +409,6 @@ class model():
         opt = Adam(learning_rate=0.0002, beta_1=0.5)
         model.compile(loss='binary_crossentropy', optimizer=opt)
         return model
-    
-    def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,epoch,mod,ncols = 10):
-        # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
-        nrows = math.ceil(n_class / ncols)
-        # Créer une figure et un sous-plot pour chaque entrée de données
-        fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
-        for i, ax in enumerate(axs.flat):
-            try:
-                # Tracer les données sur le sous-plot
-                ax.plot(x_coord,all_y_coord[i])
-            except:
-                pass    
-        mainFileName = pre_process_GAN.createMainFile_GAN('figures_train/')
-        nom_figure = os.path.join(mainFileName, '{}_{}_{}_{}'.format(epoch,mod,Mach,Re))
-        if os.path.exists(nom_figure):
-            os.remove(nom_figure)
-        # Afficher la figure
-        plt.savefig(nom_figure)
 
     def train_model(Mach,Re,x_train,y_train,latent_dim,g_model,d_model,gan_model,mod,type,nb_class, nb_epoch = 10, nb_batch = 200):
         
@@ -467,7 +450,7 @@ class model():
                     labels[i,0] = i
                     all_y.append(model.rolling_mean(coord_y_generated[i],10))
                 
-                model.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,i,mod,ncols = 10)
+                plot_gan.plot_subplots(nb_class,x_coord_ini,all_y,0,Re,i,mod,ncols = 10)
                 
                 
         # save the generator model
@@ -475,6 +458,25 @@ class model():
         if os.path.exists(name):
             os.remove(name)
         g_model.save(name)
+
+class plot_gan():
+    def plot_subplots(n_class,x_coord,all_y_coord,Mach,Re,epoch,mod,ncols = 10):
+        # Calculer le nombre de lignes en divisant le nombre total de sous-figures par le nombre de colonnes
+        nrows = math.ceil(n_class / ncols)
+        # Créer une figure et un sous-plot pour chaque entrée de données
+        fig, axs = plt.subplots(nrows=nrows, ncols=ncols,figsize = (12,8))
+        for i, ax in enumerate(axs.flat):
+            try:
+                # Tracer les données sur le sous-plot
+                ax.plot(x_coord,all_y_coord[i])
+            except:
+                pass    
+        mainFileName = pre_process_GAN.createMainFile_GAN('figures_train/')
+        nom_figure = os.path.join(mainFileName, '{}_{}_{}_{}'.format(epoch,mod,Mach,Re))
+        if os.path.exists(nom_figure):
+            os.remove(nom_figure)
+        # Afficher la figure
+        plt.savefig(nom_figure)
 
 if __name__ == "__main__":
     # -----------

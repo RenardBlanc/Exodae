@@ -1,8 +1,8 @@
 
 '''
 ---------------------Application---------------------
-Dans ce module, on retrouve les différentes fonctionnalité 
-développé au cours de ce projet.
+Dans ce module, on retrouve certaines fonctionnalités
+développés au cours de ce projet.
 
 Created: 14/11/2022
 Updated: 14/11/2022
@@ -128,10 +128,3 @@ class fcl():
         except:
             lg.error('Entrez un nom de profil présent dans la base de donnée')      
 
-class fcn():
-    # Fonction sur la classification de profils avec le clustering
-    print(1)
-
-class fg():
-    # Fonction sur la géneration de profils avec le GAN
-    print(1)
